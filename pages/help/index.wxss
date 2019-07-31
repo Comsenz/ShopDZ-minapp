@@ -1,0 +1,13 @@
+/**index.wxss**/
+@import "../../plugins/wxParse/wxParse.wxss";
+.tab-content {
+    padding-bottom: 40rpx;
+}
+.jiaju_2{
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  font-size: 30rpx;
+  padding-top: 14rpx;
+}

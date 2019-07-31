@@ -1,0 +1,15 @@
+<view class="logistics-head">
+  <view class="cart-box">
+    <image src="https://miniapp.shopdz.cn/wap/img/wuliu-img1.png" alt="" class="cart-img"></image>
+  </view>
+  <view class="logistics-details">
+    <view class='li'><view class='p'>物流公司：</view><view class="limit-p">{{data.express_name}}</view></view>
+    <view class='li'><view class='p'>快递单号：</view><view class="limit-p">{{data.express_sn}}</view></view>
+  </view>
+</view>
+<view class="logistics-track">			
+  <view class="li1" wx:for="{{list}}" wx:key>
+    <view>{{item.AcceptStation}}</view>
+    <view>{{item.AcceptTime}}</view>
+  </view>
+</view>

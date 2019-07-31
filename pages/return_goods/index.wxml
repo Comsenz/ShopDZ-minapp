@@ -1,0 +1,78 @@
+<view class="myorder1" wx:if="{{is_display && list.length>0}}"  style="margin-bottom: 1rem;">
+  <view class="order-dl2" wx:for="{{list}}" wx:key >
+    <view class="left dt">
+      <navigator url="/pages/details/index?id={{item.goods_common_id}}" hover-class="none">
+        <image src="{{item.goods_image}}" class="order-img1 img-bg"></image>
+      </navigator>
+    </view>
+    <view class='_right'>
+      <view class="dd-left left dd">
+        <navigator url="/pages/details/index?id={{item.goods_common_id}}" hover-class="none">
+          <view class="dd-p1 margin-t1" style="width:150px;height:21px;overflow:hidden;">{{item.goods_name}}</view>
+          <view class="dd-p2 text-deal">{{item.goods_spec}}</view>
+        </navigator>
+      </view>
+      <view class='absolute'>
+        <view class='ab_status' wx:if="{{item.status == 1}}">退货审核</view>
+        <view class='ab_status' wx:if="{{item.status == 2}}">正在退货</view>
+        <view class='ab_status' wx:if="{{item.status == 3}}">退货完成</view>
+        <view class='ab_status' wx:if="{{item.status == 4}}">拒绝退货</view>
+        <view class='ab_status' wx:if="{{item.status == 5}}">退货失败</view>
+        <view class='ab_status' wx:if="{{!item.status == 5 || !item.status == 4 ||!item.status == 3 || !item.status == 2 || !item.status == 1}}">{{order_state_text}}</view>
+        <view class='ab_btn' wx:if="{{item.status == 0}}" bindtap="evaluation" data-id='{{item.rec_id}}'>申请退货</view> 
+        <view class='ab_btn' wx:else bindtap="block" data-id="{{item.return_sn}}">查看退货</view> 
+      </view>
+    </view>
+  </view>
+</view>
+<view class="commont" wx:if="{{is_evaluation}}" style="">
+  <view class="comment-con  comment-constyle">
+    <view class="name-time">		
+      <view class="comment-word">{{name}}</view>
+      <view class="con-img-list comment-img-list">
+        <view class="liW li" wx:for="{{geval_image}}" wx:key>
+        <image src="{{item}}" img-id="0" class="comment-img img" style="height: 73px;"></image>
+        </view>
+      </view>
+      <view class="time1 div">{{time}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="evaluate-dl" wx:if="{{is_tijiao && list.length>0}}" wx:for="{{list}}" wx:key>
+  <view class="left dt">
+    <image src="{{item.goods_image}}" class="evalutate-img img-bg"></image>
+  </view>
+  <view class="left dt dt2">
+    <view class="evaluate-dd-left left">
+      <view class="dd-p1 margin-t1 p">{{item.goods_name}}</view>
+      <view class="dd-p3 spec-name p">{{item.goods_spec}}</view>
+    </view>
+    <view class="evaluate-dd-right right">
+      <view bindtap="submitForm" data-id='{{item.rec_id}}' class="submit-btn1 wordred borderred">提交</view>
+    </view>
+  </view>
+</view>
+
+<view class="weui-cells weui-cells_after-title" wx:if="{{is_tijiao}}">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <textarea class="weui-textarea" placeholder="期待您的意见" maxlength="500" placeholder-style="color:#b3b3b3;font-size:14px;" style="height: 150rpx" bindinput="handleContentInput" />
+      <view class="weui-textarea-counter">{{contentCount}}/500</view>
+    </view>
+  </view>
+</view>
+<view class="question-images-area" wx:if="{{is_tijiao}}">
+  <view class='sc_txt'>请点击上传图片</view>
+  <view class="question-images">
+    <block wx:for="{{images}}" wx:key="*this">
+      <view class="q-image-wrap">
+        <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+        <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+      </view>
+    </block>
+    <view class='q-image-wrap'>
+      <button  class="question-images-tool" type="default" size="mini" bindtap="chooseImage" wx:if="{{images.length < 3}}"><view class='shu'></view><view class='heng'></view></button>
+    </view>
+  </view>
+</view>

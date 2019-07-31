@@ -1,0 +1,60 @@
+.integral-show {
+    background: #fff;
+    padding: 60rpx 0;
+}
+.num-box {
+    width: 200rpx;
+    height: 200rpx;
+    margin: 20rpx auto;
+    background: url('http://shopdz.shopdz.cn/wap/img/numbg.png') repeat;
+    background-size: 100% 100%;
+}
+.number {
+    display: block;
+    color: #ab2b2b;
+    font-size: 40rpx;
+    position: relative;
+    top: 70rpx;
+    text-align: center;
+}
+.integral-number {
+    font-size: 30rpx;
+    text-align: center;
+}
+.integral-list {
+    background: #fff;
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+    width: 100%;
+    display: flex;
+}
+.li {
+    width: 94%; 
+    padding: 20rpx 3%; 
+    border-bottom: 1px solid #f0f0f0;
+}
+.inte-tit {
+    font-size: 30rpx;
+    /* line-height: 25rpx; */
+    color: #000;
+    width: 50%;
+    height: 20px;
+    overflow :hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block
+}
+.inte-num {
+    font-size: 30rpx;
+    line-height: 30rpx;
+    color: #000;
+    width: 50%;
+    text-align:right;
+    display: inline-block
+}
+.inte-time {
+    color: #b2b2b2;
+    text-align: right;
+    font-size: 28rpx;
+    line-height: 30rpx;
+}

@@ -1,0 +1,52 @@
+<import src="../../plugins/wxParse/wxParse.wxml"/>
+<view class="group-commodity">
+  <view class="commodityImg-box">
+    <image  src="{{list.group_image}}" alt="" class="commodityImg"></image>
+    <view class="groupIntroduce">
+      <view class="introduceCover"></view>
+      <view class="introduceCon">
+        <view class="groupPerson-num">3人团</view>
+      </view>
+    </view>
+  </view>
+  <view class="group-comDet">
+    <view class="group-comName">{{list.goods_name}}</view>
+    <view class="group-comDescribe">{{list.group_content}}</view>
+    <view class="groupDet-spec">
+      <view class="group-comSpec"><view>十五格</view></view>
+      <view class="timeLimit">
+        <image src="https://miniapp.shopdz.cn/plugins/group/public/images/time.png" alt="限时图标" class="time-icon" style='width:15px'></image>
+        组团时限：24小时
+        <!-- <img src="../public/images/time.png" alt="限时图标" class="time-icon">组团时限：24小时 -->
+      </view>
+    </view>
+  </view>
+</view>
+<view class="coupon-list" id="tab-contentul">
+  <view class="playGroup">
+    <view class="playGroup-tit">拼团玩法</view>
+  </view>
+  <view class="groupStep-list">
+    <view class='li'><view class="groupStep-num">1</view>选择商品</view>
+    <view class='li'><view class="groupStep-num">2</view>支付开团</view>
+    <view class='li'><view class="groupStep-num">3</view>邀请好友</view>
+    <view class='li'><view class="groupStep-num">4</view>拼团成功</view>
+  </view>
+  <view class='zhic'>支付开团并邀请3人参团，人数不足自动退款，详情点击上方拼团玩法</view>
+</view>
+<view class="coupon-list" id="tab-contentul">
+  <view class="playGroup">
+    <view class="playGroup-tit">商品详情</view>
+  </view>
+  <view>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+</view>
+
+<view class='open'>
+  <view class='zheng' goods_id>
+    <navigator url="/pages/details/index?id={{list.id}}" hover-class="none">
+          ￥45.00正价购买
+    </navigator></view>
+  <view class='tuan'>￥1.00支付开团</view>
+</view>

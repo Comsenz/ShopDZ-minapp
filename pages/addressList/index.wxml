@@ -1,0 +1,32 @@
+<view style='height:100vh;'>
+<scroll-view scroll-y style='height:92vh;'>
+  <view class='list'>
+    <view class='item' wx:for="{{address_list}}" wx:key>
+      <view class="address-name" style="text-align:center">
+        <view class="name2">{{item.true_name}}</view>
+        <view class="default" wx:if="{{item.is_default == 1}}" >默认</view>
+      </view>
+      <view class="address-describe address-describe-list" style="width: 63%;">
+        <view class="phone1">{{item.tel_phone}}</view>
+        <view class="address-word">{{item.area_info}}{{item.address}}</view>
+      </view>
+      <navigator  hover-class="none" url="/pages/addressAdd/index?city={{item.city_id}}&province={{item.province_id}}&area={{item.area_id}}&phone={{item.tel_phone}}&name={{item.true_name}}&address={{item.address}}&address_id={{item.address_id}}&is_default={{item.is_default}}"  class='edit'>
+        <image src='/images/edit.png'></image>
+      </navigator>
+      <view class='choice'>
+        <image src="http://shopdz.shopdz.cn/wap/img/dele2.png" bindtap='addressDel' data-id='{{item.address_id}}'></image>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<navigator url="/pages/address-Add/index" class='btn'>
+ 新增收货地址
+</navigator>
+</view>
+<view class="alertbox" wx:if="{{is_addressDel}}">	
+  <view class="alert-p">确定要删除此地址吗？</view>	
+  <view class="btnbox1">		
+    <view class="cancelbtn1" bindtap="cancel">取消</view>		
+    <view class="surebtn1" bindtap='addressDel' data-id='{{address_id}}' >确定</view>	
+  </view>
+</view>

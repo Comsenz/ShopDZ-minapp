@@ -1,0 +1,17 @@
+<view class="integral-show">
+  <view class="num-box">
+    <view class="number pointsum">{{total}}</view>
+  </view>
+  <view class="integral-number">当前积分</view>
+</view>
+<view class="integral-list" id="mypointslist">			
+  <view class='li'>
+    <view class="integral-con" wx:for="{{list}}" wx:key>
+      <view class="inte-con">
+        <view class="inte-tit">{{item.pl_desc}}</view>
+        <view class="inte-num">{{item.pl_points}}积分</view>
+      </view>
+      <view class="inte-time">{{item.pl_addtime_text}}</view>
+    </view>
+  </view>
+</view>

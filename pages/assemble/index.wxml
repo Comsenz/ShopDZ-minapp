@@ -1,0 +1,62 @@
+<view style='height:100vh;'>
+  <view class='tab'>
+    <view bindtap='tabFun' data-index="1">
+      <text class='{{tabIndex==1?"active":""}}'>拼团首页</text>
+    </view>
+    <view bindtap='tabFun' data-index="2">
+      <text class='{{tabIndex==2?"active":""}}'>我的拼团</text>
+    </view>
+  </view>
+ <view id="tab-content" class="tab-content">
+  <view class="show voucher-list">
+    <view class="coupon-list" id="tab-contentul">
+      <view class="myorder2">
+        <image class='img' src="{{img.group_img}}"></image>
+			</view>
+      <view class="playGroup">
+          <view class="playGroup-tit">拼团玩法</view>
+          <image src="https://miniapp.shopdz.cn/plugins/group/public/images/jtr.png" alt="" class="playGroup-point" style='width:15px;'></image>
+      </view>
+      <view class="groupStep-list">
+        <view class='li'><view class="groupStep-num">1</view>选择商品</view>
+        <view class='li'><view class="groupStep-num">2</view>支付开团</view>
+        <view class='li'><view class="groupStep-num">3</view>邀请好友</view>
+        <view class='li'><view class="groupStep-num">4</view>拼团成功</view>
+      </view>
+      <view id="fightgrouplist">	
+        <view class="group-commodity" wx:for="{{list}}" wx:key>
+          <view class="commodityImg-box">
+            <image  src="{{item.group_image}}" alt="" class="commodityImg"></image>
+            <view class="groupIntroduce">
+              <view class="introduceCover"></view>
+              <view class="introduceCon">
+                <view class="groupPerson-num">3人团</view>
+              </view>
+            </view>
+          </view>
+          <view class="group-comDet">
+            <view class="group-comName">{{item.goods_name}}</view>
+            <view class="group-comDescribe">{{item.group_content}}</view>
+            <view class="group-comDescribe group-conTime">活动时间：{{item.starttime_text}}-{{item.endtime_text}}</view>
+            <view class="groupOpen">
+              <view class="group-comPrice">
+                <view class="group-newPrice">¥{{item.group_price}}</view>
+                <view class="group-oldPrice">¥{{item.goods_price}}</view>
+              </view>
+              <navigator url="/pages/assemble_detail/index?goods_id={{item.id}}" hover-class="none">
+                <view class="groupOpen-btn" >我要开团</view>
+              </navigator>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- <view wx:if="{{list.length ==0 || list.length <0}}">  
+        <view  class='img-center'>
+          <image src="http://shopdz.shopdz.cn/wap/img/refundImg.png" style='width:80px; height:90px;' class='coupon-null-img'></image>
+          <view class='coupon-tit'>暂无退货</view>
+        </view>
+      </view> -->
+    </view>
+  </view>
+</view>
+</view>

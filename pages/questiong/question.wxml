@@ -1,0 +1,91 @@
+<view class="question-form">
+  <view class="question-input-area">
+    <view class="refund-list">
+      <view>
+        <view class="cart-list-rl cart-list-dl return-dl">
+          <view class="fl cart-list-dt return-list-dt">
+            <image src="{{goods_image}}" class="return-img" style="height: 74px;"></image>
+          </view>
+          <view class='_right'>
+            <view class="cart-list-dd return-list-dd">
+              <view class="cart-dd-tit">{{goods_name}}</view>
+              <view class="cart-spec"></view>
+              <view class="cart-proprice">单价：¥{{goods_amount}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="reason-choice">
+      <view class="dt left">退货数量：</view>
+      <view class='item'>
+        <view class="stepper">
+          <!-- 减号 -->
+          <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+          <!-- 数值 -->
+          <input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+          <!-- 加号 -->
+          <text class="normal" bindtap="bindPlus">+</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 问题标题  -->
+    <view class="reason-choice">
+      <view class="dt left">退款金额：</view>
+      <view class="dd left">
+        <input name="goods_amount" class="fl refund-money" disabled="true" bindinput="bindKeyName" value="{{order_amount}}"></input>
+        <view class='fl'>元</view>
+        <!-- <view class="refund-money" style="border: none;">{{order_amount}}</view> -->
+      </view>
+    </view>
+    <view class='reason item'>
+      <picker name="picker_hx" value="{{cause[hx_index].causes_id}}" data-selecthx="{{cause[hx_index].causes_id}}" range="{{cause}}" range-key="{{'causes_name'}}" bindchange="bindRegionChang">
+        <view class="picker" wx:if="{{!causes}}">
+          退款原因（点击选择退货原因）
+        </view>
+        <view class="picker" wx:if="{{causes}}">
+          {{causes}}
+        </view>
+      </picker>
+      <!-- <view class='icon'>
+        <image src='/images/my_order.png'></image>
+      </view> -->
+    </view>
+    <!-- 问题正文  -->
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="退款说明" maxlength="500" placeholder-style="color:#b3b3b3;font-size:14px;" style="height: 150rpx" bindinput="handleContentInput" />
+          <view class="weui-textarea-counter">{{contentCount}}/500</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="question-images-area">
+    <!-- 上传凭证 -->
+    <view class='sc_txt'>上传凭证</view>
+    <!-- 添加图片按钮  -->
+    <!-- <button  class="question-images-tool" type="default" size="mini" bindtap="chooseImage" wx:if="{{images.length < 3}}"><view class='shu'></view><view class='heng'></view></button> -->
+
+    <!-- 图片缩略图  -->
+    <view class="question-images">
+      <block wx:for="{{images}}" wx:key="*this">
+        <view class="q-image-wrap">
+          <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+          <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+        </view>
+      </block>
+      <view class='q-image-wrap'>
+        <button  class="question-images-tool" type="default" size="mini" bindtap="chooseImage" wx:if="{{images.length < 3}}"><view class='shu'></view><view class='heng'></view></button>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 提交表单按钮  -->
+  <button class="weui-btn" bindtap="submitForm">提交</button>
+
+</view>

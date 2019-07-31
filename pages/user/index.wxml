@@ -1,0 +1,165 @@
+<view class='gary' wx:if="{{is_sign == 2}}">
+  <view class='sign-alert'>
+    <view class='sign-close-box' bindtap='close' >
+      <image mode='aspectFit' class='sign-close-btn' src='http://shopdz.shopdz.cn/wap/img/signcolse.png'></image>
+    </view>
+    <view class="sign-alert-con">
+      <view class="add-integral">
+        <text class="add-integral-num">+{{points}}</text>
+        积分
+      </view>
+      <image src="http://shopdz.shopdz.cn/wap/img/signIcon.png" alt="" class="sign-alert-icon"></image>
+      <navigator url="/pages/integral/index" hover-class="none">
+        <view type="button" class="sign-alert-codebtn">查看详情</view>
+      </navigator>
+    </view>
+  </view>
+</view>
+<scroll-view scroll-y style='height:100vh;'>
+  <view class='top'>
+    <view>
+      <view class='img'><open-data type="userAvatarUrl"></open-data></view><view class='text'><open-data type="userNickName" style='color:#fff;'></open-data></view>
+      <view class='oper_'>
+        <view class='oper_item'>
+          <navigator url="/pages/integral/index" hover-class="none">
+            <image mode='aspectFit' src='http://shopdz.shopdz.cn/wap/img/mine-icon1.png'></image>
+            <view class='oper_cont'>我的积分</view>
+          </navigator>
+        </view>
+        <view class='oper_item'>
+          <navigator url="/pages/settlement/index" hover-class="none">
+            <image mode='aspectFit' src='http://shopdz.shopdz.cn/wap/img/mine-icon2.png'></image>
+            <view class='oper_cont'>我的收藏</view>
+          </navigator>
+        </view>
+        <!-- bindtap='sign' -->
+        <view class='oper_item' bindtap='sign'>
+          <image mode='aspectFit' src='http://shopdz.shopdz.cn/wap/img/mine-icon3.png'></image>
+          <view class='oper_cont' wx:if="{{is_sign ==1}}">每日签到</view>
+          <view class='oper_cont' wx:if="{{is_sign ==0}}" >已签到</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='gezi'>
+    <view class='gezi_item'>
+      <navigator url="/pages/order/index" hover-class="none">
+        <image mode='aspectFit' src='http://shopdz.shopdz.cn/wap/img/module1.jpg'></image>
+        <view class='gezi_cont'>我的订单</view>
+      </navigator>
+    </view>
+    <view class='gezi_item'>
+      <navigator hover-class="none" url="/pages/addressList/index" >
+        <image mode='aspectFit' src='http://shopdz.shopdz.cn/wap/img/module2.jpg'></image>
+        <view class='gezi_cont'>地址管理</view>
+      </navigator>
+    </view>
+    <view class='gezi_item'>
+      <navigator url="/pages/coupon_all/index" hover-class="none">
+        <image mode='aspectFit' src='http://shopdz.shopdz.cn/wap/img/module3.jpg'></image>
+        <view class='gezi_cont'>优惠券</view>
+      </navigator>
+    </view>
+    <view class='gezi_item'>
+      <!-- <navigator url="/pages/questiong/question" hover-class="none"> -->
+      <!-- <navigator url="/pages/return_goods/index" hover-class="none"> -->
+      <navigator url="/pages/footprint/index" hover-class="none">
+        <image mode='aspectFit' src='http://shopdz.shopdz.cn/wap/img/module3.jpg'></image>
+        <view class='gezi_cont'>我的足迹</view>
+      </navigator>
+    </view>
+    <view class='gezi_item'>
+      <navigator url="/pages/feedback/index" hover-class="none">
+        <image mode='aspectFit' src='http://shopdz.shopdz.cn/wap/img/module5.jpg'></image>
+        <view class='gezi_cont'>帮助中心</view>
+      </navigator>
+    </view>
+    <view class='gezi_item' bindtap='contact' data-type='1'>
+      <image mode='aspectFit' src='http://shopdz.shopdz.cn/wap/img/module6.png'></image>
+      <view class='gezi_cont'>联系客服</view>
+    </view>
+    <view class='gezi_item'>
+      <navigator url="/pages/yijian/yijian" hover-class="none">
+        <image mode='aspectFit' src='http://shopdz.shopdz.cn/wap/img/module4.jpg'></image>
+        <view class='gezi_cont'>意见反馈</view>
+      </navigator>
+    </view>
+    <view class='gezi_item'>
+      <navigator url="/pages/refund/index" hover-class="none">
+        <image mode='aspectFit' src='http://shopdz.shopdz.cn/wap/img/refundImg.png'></image>
+        <view class='gezi_cont'>退货退款</view>
+      </navigator>
+    </view>
+    <view class='gezi_item'>
+      <navigator url="/pages/extension/index" hover-class="none">
+        <image mode='aspectFit' src='http://shopdz.shopdz.cn/wap/img/spread.png'></image>
+        <view class='gezi_cont'>推广有礼</view>
+      </navigator>
+    </view>
+  </view>
+  <view class="alertbox" wx:if="{{if_number}}">	
+    <view class="alert-p">客服电话 {{enterprise_contact}}</view>	
+    <view class="btnbox1">		
+      <!-- <view class="cancelbtn1" bindtap="cancel">取消</view> 		 -->
+      <view class="surebtn1" bindtap='contact' data-type='2' >确定</view>	
+    </view>
+  </view>
+  <!-- <navigator url="/pages/order/index" class='item'>
+    <view class='left'>
+      我的订单
+    </view>
+    <view class='right'>
+      <text>查看全部订单</text>
+      <image src='/images/my_order.png'></image>
+    </view>
+  </navigator> -->
+  <!-- <view class='icon'>
+    <navigator url="/pages/order/index?type=1" hover-class="none" >
+      <image src='/images/pending_payment.png' mode="aspectFit"></image>
+      <text>代付款</text>
+    </navigator>
+    <navigator url="/pages/order/index?type=2" hover-class="none" >
+      <image src='/images/pending_delivery.png' mode="aspectFit"></image>
+      <text>代发货</text>
+    </navigator>
+    <navigator url="/pages/order/index?type=3" hover-class="none" >
+      <image src='/images/already_shipped.png' mode="aspectFit"></image>
+      <text>已发货</text>
+    </navigator>
+    <view bindtap='sign'>
+      <image src='/images/completed.png'></image>
+      <text>已完成</text>
+    </view>
+  </view> -->
+  <!-- <navigator url="/pages/coupon/index" class='item'>
+    <view class='left'>
+      我的优惠券
+    </view>
+    <view class='right'>
+      <image src='/images/my_order.png'></image>
+    </view>
+  </navigator> -->
+  <!-- <navigator url="/pages/addressList/index" class='item'>
+    <view class='left'>
+      地址管理
+    </view>
+    <view class='right'>
+      <image src='/images/my_order.png'></image>
+    </view> -->
+  <!-- </navigator> -->
+</scroll-view>
+
+
+<view class="js_dialog tip_dialog" id="" wx:if="{{!hasUserInfo && canIUse && usershow}}">
+  <!-- <view class="weui-mask"></view> -->
+  <view class="weui-dialog">
+  <view class="weui-dialog__te">微信登录</view>
+  <view class="weui-dialog__bd">
+  “shopDz”小程序申请获取您的昵称、头像等公开信息。
+  </view>
+  <view class="weui-dialog__ft">
+  <button open-type='getUserInfo' catchtap='hide_mask' bindgetuserinfo="getUserInfo" class="weui-dialog__btn weui-dialog__btn_primary">确认</button>
+  </view>
+  </view>
+</view>

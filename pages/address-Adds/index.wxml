@@ -1,0 +1,67 @@
+<view class="main">
+  <view class='data'>
+    <view class='item'>
+      <text>联系人</text>
+      <input type='text' value="" bindinput="bindKeyName" placeholder='请填写姓名'></input>
+    </view>
+     <view class='item'>
+      <text>手机号</text>
+      <input type='number' value="" bindinput="bindKeyMobile"  placeholder='11位手机号码'></input>
+    </view>
+     <view class='item'>
+      <picker name="picker_hx" value="{{childAreaList[hx_index].id}}" data-selecthx="{{childAreaList[hx_index].area_id}}" range="{{childAreaList}}" range-key="{{'area_name'}}" bindchange="bindChange">
+        <view class="picker" wx:if="{{info_province}}">
+          {{info_province}}
+        </view>
+        <view class="picker" wx:else>
+          请选择省
+        </view>
+      </picker>
+      <view class='icon'>
+      <image src='/images/my_order.png'></image>
+      </view>
+    </view>
+    <view class='item'>
+      <!-- <text>市</text> -->
+      <picker name="picker_hx" value="{{province[hx_index].id}}" data-selecthx="{{province[hx_index].area_id}}" range="{{province}}" range-key="{{'area_name'}}" bindchange="bindRegionChang">
+        <view class="picker" wx:if="{{info_city}}">
+          {{info_city}}
+        </view>
+        <view class="picker" wx:else>
+          请选择市
+        </view>
+      </picker>
+      <view class='icon'>
+      <image src='/images/my_order.png'></image>
+      </view>
+    </view>
+    <view class='item'>
+      <!-- <text>县或区</text> -->
+      <picker name="picker_hx" value="{{area[hx_index].id}}" data-selecthx="{{area[hx_index].area_id}}" range="{{area}}" range-key="{{'area_name'}}" bindchange="bindRegionChange">
+        <view class="picker" wx:if="{{info_area}}">
+          {{info_area}}
+        </view>
+         <view class="picker" wx:else>
+          请选择区
+        </view>
+      </picker>
+      <view class='icon'>
+      <image src='/images/my_order.png'></image>
+      </view>
+    </view>
+     <view class='item'>
+      <text>详细地址</text>
+      <input type='text' bindinput="bindKeyDetailed"  value="" placeholder='街道门牌号信息'></input>
+    </view>
+    <view class="address-default">
+					<view wx:if="{{is_default==1}}" class="check-box address-check" bindtap="defaults" data-id='{{is_default}}'>
+	    				<label for=""></label>
+	    		</view>
+          <view wx:if="{{is_default==0}}" class="checks-box address-check" bindtap="defaults" data-id='{{is_default}}'>
+	    				<label for=""></label>
+	    		</view>
+					<view class="remind4">设为默认地址</view>
+				</view>
+    </view>
+  <view class='btn active' bindtap='submitFun'>保存</view>
+</view>

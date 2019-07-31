@@ -1,0 +1,280 @@
+<view wx:if="{{is_subject}}">
+  <scroll-view wx:if="{{address.length>0}}" scroll-y style='height:92vh'>
+    <view class='title'>
+      <view class='left'>
+        购物清单
+      </view>
+    </view>
+     <view class='list'>
+        <view class='item1' wx:for="{{info}}" wx:key>
+          <view class='content'>
+            <image src='{{item.goods_image}}'></image>
+            <view class='text'>
+              <view class='name'>{{item.goods_name}}</view>
+              <view class='price1'>
+                <text>¥{{item.goods_price}}</text>
+                <text>x{{item.goods_num}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    <view class='title'>
+      <view class='left'>
+        收货地址
+      </view>
+      <view class='right' bindtap='display'>
+        <image style='width:8px;height:15px;' src='/images/my_order.png'></image>
+      </view>
+    </view>
+    <!-- url="/pages/addressList/index?type=1" -->
+     <!-- <navigator hover-class="none"  class='address'> -->
+      <!-- <view class='left'>
+        <view>13261674926 昂琪琪 收</view>
+        <view>山西阳泉市矿区凄凄切切</view>
+      </view> -->
+      <view class='address'>
+          <view class='item' wx:for="{{address}}" wx:key wx:if="{{address_id?address_id==item.address_id:item.is_default == 1}}">
+            <view class="fl address-name" style="text-align:center">
+              <view class="name2">{{item.true_name}}</view>
+              <view class="default" wx:if="{{item.is_default == 1}}" >默认</view>
+            </view>
+            <view class="fl address-describe address-describe-list" style="width: 63%;">
+              <view class="phone1">{{item.tel_phone}}</view>
+              <view class="address-word">{{item.area_info}}{{item.address}}</view>
+            </view>
+            <view class='right' bindtap='display'>
+              <image style='width:8px;height:15px;' src='/images/my_order.png'></image>
+            </view>
+          </view>
+      </view>
+      <!-- <view class='address_'>
+        <view class='address_item'>
+          <view class='fl item_a'>
+            <view class="item_a_ mb10 ell">琦琦琦66666666</view>
+            <view class="default" style='text-align: center'>默认</view>
+          </view>
+          <view class='fl item_b'>
+            <view class="item_a_ mb10">01234567899</view>
+            <view class="item_a_">shanxi阳泉市矿区</view>
+          </view>
+          <view class='go_dd'>
+            <image style='width:8px;height:15px;' bindtap='display' src='/images/my_order.png'></image>
+          </view>
+        </view>
+      </view> -->
+    <view class='title'>
+      <view class='left' wx:if="{{!limit}}">
+        请选择优惠券
+      </view>
+      <view class='left' wx:if="{{limit}}">
+        满{{limit}}元可用
+      </view>
+      <view class='right' bindtap='coupon' >
+        <text wx:if="{{limit}}">￥{{totle_price}}</text>
+        <image src='/images/my_order.png'></image>
+      </view>
+    </view>
+    <view class='title'>
+      <view class='left'>
+        商品价格
+      </view>
+    </view>
+    <view class='title price'>
+      <view class='left'>
+        商品合计
+      </view>
+       <view class='right'>
+        <text>{{price}}</text>
+      </view>
+    </view>
+    <view class='title price'>
+      <view class='left ' wx:if="{{shipping_fee.shipping_fee && shipping_fee.expense - price >0}}">
+        运费（还差{{shipping_fee.expense - price}}元免邮）
+      </view>
+      <view class='left ' wx:else>
+        运费（免邮）
+      </view>
+      <view class='right' wx:if="{{shipping_fee.shipping_fee && shipping_fee.expense - price >0}}">
+        <text>{{shipping_fee.shipping_fee}}</text>
+      </view>
+      <view class='right' wx:else>
+        <text>0</text>
+      </view>
+    </view>
+    <view class='title price'>
+      <view class='left'>
+        优惠
+      </view>
+      <view class='right'>
+        <text wx:if="{{totle_price}}">￥-{{totle_price}}</text>
+        <text wx:if="{{!totle_price}}">0.00</text>
+      </view>
+    </view>
+    <view class='title price'>
+      <textarea bindinput="bindTextAreaBlur" show-confirm-bar="" class='liuyan' placeholder='请输入订单留言' ></textarea>
+    </view>
+    <view class='title price'>
+      <view class='left'>
+        实付
+      </view>
+      <view class='right'>
+        <text wx:if="{{shipping_fee.shipping_fee && shipping_fee.expense - price >0}}">{{shipping_fee.shipping_fee + price - totle_price}}</text>
+        <text wx:else>{{price-totle_price}}</text>
+      </view>
+    </view>
+  </scroll-view>
+  <view class='btn1' wx:if="{{address.length>0}}" bindtap='py'>
+  支付
+  </view>
+</view>
+<scroll-view scroll-y style='height:92vh;' wx:if="{{is_display}}">
+  <view class='list' wx:for="{{address}}" wx:key bindtap='selection' data-id='{{item.address_id}}'>
+    <view wx:if="{{address_id}}" class="item {{address_id == item.address_id ? 'border-redleft' : ''}}">
+      <view class="address-name" style="text-align:center">
+        <view class="name2">{{item.true_name}}</view>
+        <view class="default" wx:if="{{item.is_default == 1}}" >默认</view>
+      </view>
+      <view class="address-describe address-describe-list" style="width: 63%;">
+        <view class="phone1">{{item.tel_phone}}</view>
+        <view class="address-word">{{item.area_info}}{{item.address}}</view>
+      </view>
+    </view>
+    <view wx:else="{{!address_id}} "  class="item {{item.is_default == 1 ? 'border-redleft' : ''}}">
+      <view class="address-name" style="text-align:center">
+        <view class="name2">{{item.true_name}}</view>
+        <view class="default" wx:if="{{item.is_default == 1}}" >默认</view>
+      </view>
+      <view class="address-describe address-describe-list" style="width: 63%;">
+        <view class="phone1">{{item.tel_phone}}</view>
+        <view class="address-word">{{item.area_info}}{{item.address}}</view>
+      </view>
+      <navigator  hover-class="none" url="/pages/addressAdd/index?city={{item.city_id}}&province={{item.province_id}}&area={{item.area_id}}&phone={{item.tel_phone}}&name={{item.true_name}}&address={{item.address}}&address_id={{item.address_id}}&is_default={{item.is_default}}"  class='edit'>
+        <image src='/images/edit.png'></image>
+      </navigator>
+      <!-- <view class='choice'>
+        <image src="http://shopdz.shopdz.cn/wap/img/dele2.png" bindtap='deletes' data-id='{{item.address_id}}'></image>
+      </view> -->
+    </view>
+  </view>
+</scroll-view>
+<view class='btn2 active' wx:if="{{is_display}}" bindtap='address'>新增收货地址</view>
+<view class="mains" wx:if="{{is_coupon}}">
+  <scroll-view scroll-y style='height:92vh;'>
+    <view id="tab-content" class="tab-content">
+      <view class="show voucher-list">
+        <view class="coupon-list" id="tab-contentul">
+          <view class="address-default" bindtap="">
+            <view wx:if="{{is_coupon_list==1}}" class="check-box address-check">
+                  <label for=""></label>
+              </view>
+              <view wx:if="{{is_coupon_list==0}}" class="checks-box address-check">
+                  <label for=""></label>
+              </view>
+            <view class="remind4" bindtap='use_coupon' data-id='0'>不使用优惠券</view>
+          </view>
+          <view class="coupon-li" wx:if="{{coupon_list.length >0}}" wx:for="{{coupon_list}}" wx:key >
+            <view class="coupon-box-det coupon-det">
+              <view class='coupon-box-top {{item.rpacket_t_wx_card_id?"Color010":"Color011"}}'>
+              <!-- <view wx:else class="coupon-box-top Color011"> -->
+                <view class="coupon-top-con" bindtap='use_coupon' data-id='{{item.rpacket_id}}' data-limit='{{item.rpacket_limit}}' data-price='{{item.rpacket_price}}'>
+                  <view class="zoom">
+                    <view class="coupon-subtit left">{{item.rpacket_title}}</view>
+                    <!-- <view class="count-limit right">每人限领5张</view> -->
+                  </view>
+                  <view class="zoom couponMoney-box">
+                    <view class="left">
+                      <view class="money-unit">¥</view>
+                      <view class="money-num">{{item.rpacket_price}}</view>
+                    </view>
+                    <view class="right">
+                      <image wx:if="{{item.rpacket_t_wx_card_id}}" src="http://shopdz.shopdz.cn/wap/img/wx_statu.png" style='width:80px' class="coupon-statu sc-statu"></image> 
+                      <image wx:else src="https://miniapp.shopdz.cn/wap/img/sc_statu.png" style='width:80px' class="coupon-statu sc-statu"></image>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view class="coupon-box-bottom">
+                <view class="coupon-bottom-tit">订单满{{item.rpacket_limit}}元（含运费）</view>
+                <view class="coupon-remind2">有效期：{{item.rpacket_start_date}}-{{item.rpacket_end_date}}</view>
+              </view>
+            </view>
+          </view>
+          <view wx:if="{{coupon_list.length ==0 || coupon_list.length <0}}">  
+            <view  class='img-center'>
+              <image src="https://miniapp.shopdz.cn/wap/img/coupon-null.png" style='width:80px; height:90px;' class='coupon-null-img'></image>
+              <view class='coupon-tit'>暂无优惠券</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<scroll-view scroll-y style='height:92vh;' wx:if="{{address.length<0 || address.length==0}}">
+  <view class="main">
+    <view class='data'>
+      <view class='item'>
+        <text>联系人</text>
+        <input type='text' value="" bindinput="bindKeyName" placeholder='请填写姓名'></input>
+      </view>
+      <view class='item'>
+        <text>手机号</text>
+        <input type='number' value="" bindinput="bindKeyMobile"  placeholder='手机号'></input>
+      </view>
+      <view class='item'>
+        <picker name="picker_hx" value="{{childAreaList[hx_index].id}}" data-selecthx="{{childAreaList[hx_index].area_id}}" range="{{childAreaList}}" range-key="{{'area_name'}}" bindchange="bindChange">
+          <view class="picker" wx:if="{{info_province}}">
+            {{info_province}}
+          </view>
+          <view class="picker" wx:else>
+            请选择省
+          </view>
+        </picker>
+        <!-- <view class='icon'>
+        <image src='/images/my_order.png'></image>
+        </view> -->
+      </view>
+      <view class='item'>
+        <picker name="picker_hx" value="{{province[hx_index].id}}" data-selecthx="{{province[hx_index].area_id}}" range="{{province}}" range-key="{{'area_name'}}" bindchange="bindRegionChang">
+          <view class="picker" wx:if="{{info_city}}">
+            {{info_city}}
+          </view>
+          <view class="picker" wx:else>
+            请选择市
+          </view>
+        </picker>
+        <!-- <view class='icon'>
+        <image src='/images/my_order.png'></image>
+        </view> -->
+      </view>
+      <view class='item'>
+        <picker name="picker_hx" value="{{area[hx_index].id}}" data-selecthx="{{area[hx_index].area_id}}" range="{{area}}" range-key="{{'area_name'}}" bindchange="bindRegionChange">
+          <view class="picker" wx:if="{{info_area}}">
+            {{info_area}}
+          </view>
+          <view class="picker" wx:else>
+            请选择区
+          </view>
+        </picker>
+        <!-- <view class='icon'>
+        <image src='/images/my_order.png'></image>
+        </view> -->
+      </view>
+      <view class='item'>
+        <text>详细地址</text>
+        <input type='text' bindinput="bindKeyDetailed"  value="" placeholder='街道门牌号信息'></input>
+      </view>
+      <view class="address-default">
+            <view wx:if="{{is_default==1}}" class="check-box address-check" bindtap="defaults" data-id='{{is_default}}'>
+                <label for=""></label>
+            </view>
+            <view wx:if="{{is_default==0}}" class="checks-box address-check" bindtap="defaults" data-id='{{is_default}}'>
+                <label for=""></label>
+            </view>
+            <view class="remind4">设为默认地址</view>
+          </view>
+      </view>
+  </view>
+</scroll-view>
+<view class='btn2 active' wx:if="{{address.length<0 || address.length==0}}" bindtap='submitFun'>保存</view>

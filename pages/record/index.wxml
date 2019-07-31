@@ -1,0 +1,23 @@
+<view class="myorder1" wx:if="{{list.length>0}}"  style="margin-bottom: 1rem;">
+  <view class="order-dl2" wx:for="{{list}}" wx:key >
+    <view class="left dt">
+      <navigator url="/pages/details/index?id={{item.fav_id}}" hover-class="none">
+        <image src="{{item.goods_image}}" class="order-img1 img-bg"></image>
+      </navigator>
+    </view>
+    <view>
+      <view class="dd-left left dd">
+        <navigator url="/pages/details/index?id={{item.fav_id}}" hover-class="none">
+          <view class="dd-p1 margin-t1" style="width:150px;height:21px;overflow:hidden;">{{item.goods_name}}</view>
+          <view class="dd-p2">¥{{item.log_price}}</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{list.length == 0 || list.length < 0}}">
+  <view class='img-center'>
+    <image src="https://miniapp.shopdz.cn/wap/img/refundImg.png" style='width:100px; height:100px;' class='coupon-null-img'></image>
+    <view class='coupon-tit'>暂无提现记录</view>
+  </view>
+</view>

@@ -1,0 +1,112 @@
+.list .item{
+  display: flex;
+  margin: 0 18px;
+  border-bottom: 1px solid #dedede;
+  /* padding: 15px 0; */
+  align-items: center;
+  height: 98px;
+}
+.item .left{
+  flex: 1 0 80%;
+  font-size: 14px;
+}
+.address-name {
+    width: 18%;
+}
+.name2, .phone1 {
+    line-height: 2;
+    font-size: 26rpx;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.address-describe {
+    margin-left: 4%;
+}
+.address-word {
+    font-size: 22rpx;
+    line-height: 1.5;
+    padding: .4rpx;
+    width: 85%;
+    word-wrap: break-word;
+}
+.default {
+    padding: .4rpx;
+    border: 1px solid #AB2B2B;
+    border-radius: .4rpx;
+    -webkit-border-radius: .4rpx;
+    font-size: 20rpx;
+    position: relative;
+    top: .4rpx;
+    -webkit-box-sizing: border-box;
+}
+.item .edit,.choice{
+  flex: 1 0 10%;
+  text-align: center;
+}
+
+.item .edit image{
+  width: 20px;
+  height: 20px;
+}
+.item .choice image{
+  width: 25px;
+  height: 26px;
+}
+.alertbox {
+    position: fixed;
+    z-index: 10001;
+    width: 80%;
+    /* width: 432px;  */
+    left: 10%;
+    background: #fff;
+    top: 30%;
+    /* border-radius: 3px; */
+    -webkit-border-radius: 3px;
+    /* -moz-border-radius: 3px;   */
+    /* -o-border-radius: 3px; */
+    display: block;
+    /* display: none; */
+}
+.alert-p {
+    font-size: 40rpx;
+    color: #666;
+    text-align: center;
+    line-height: 3;
+}
+.btnbox1 {
+    height: 80rpx;
+    border-top: 1px solid #f0f0f0;
+}
+.cancelbtn1  {
+    width: 50%;
+    height: 100%;
+    line-height: 80rpx;
+    float: left;
+     border-right: 1px solid #f0f0f0;
+    -webkit-box-sizing: border-box; 
+    font-size: 36rpx;
+    text-align: center;
+    cursor: pointer;
+}
+.surebtn1 {
+    width: 50%;
+    height: 100%;
+    line-height: 80rpx;
+    float: left;
+    -webkit-box-sizing: border-box; 
+    font-size: 36rpx;
+    text-align: center;
+    cursor: pointer;
+    color: #AB2B2B;
+    display: inline-block;
+}
+.btn{
+  height: 8vh;
+  line-height: 8vh;
+  text-align: center;
+  background:#ff5f19;
+  font-size: 14px;
+  color: #fff;
+}

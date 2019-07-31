@@ -1,0 +1,123 @@
+<scroll-view style='height:100vh' wx:if="{{list.length>0}}">
+  <view class='top' style='height:8vh'>
+    <!-- <view class='text'> -->
+      <view class='label' bindtap="allselection">
+        <image wx:if="{{total}}" src='/images/choice_y.png'></image>
+        <image wx:else src='/images/choice_n.png'></image>
+      </view>
+      <text style="padding-left: 10px;" bindtap='delallselection'>全选</text>
+      <text style='padding-left:10px;'></text>
+    <!-- </view> -->
+   <!-- <view class='label' wx:if="{{!isEdit}}" bindtap="allselection"> -->
+    <!-- <text wx:if="{{!isEdit}}" class='edit-btns' bindtap='editFun'>共{{list.length}}件宝贝</text> -->
+    <!-- <image wx:if="{{total}}" src='/images/choice_y.png'></image> -->
+    <!-- <image wx:else src='/images/choice_n.png'></image> -->
+   <!-- </view> -->
+   <!-- <text class='city'>全选</text> -->
+   <text wx:if="{{!isEdit}}" class='edit-btn' bindtap='editFun'>编辑</text>
+   <text wx:else class='edit-btn' bindtap='editFun'>完成</text>
+  </view>
+  <scroll-view scroll-y class='list' style='height:82vh'>
+    <view class='item' wx:if="{{!isEdit}}" wx:for="{{list}}" wx:key>
+      <view class='label' bindtap="single" data-id="{{item.goods_id}}" data-goods_id="{{item.id}}">
+        <image wx:if="{{item.select}}" src='/images/choice_y.png'></image>
+        <image wx:else src='/images/choice_n.png'></image>
+      </view>
+      <navigator class='content' hover-class="none" url="/pages/details/index?id={{item.goods_common_id}}">
+        <image src='{{item.goods_image}}'></image>
+        <view class='text'>
+          <view class='title aa'>{{item.goods_name}}</view>
+          <view class='spec'>{{item.spec_name}}</view>
+          <view class='price'>
+            <text>¥{{item.goods_price}}</text>
+            <text>x{{item.goods_num}}</text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <view class='item edit' wx:if="{{isEdit}}"  wx:for="{{list}}" wx:key>
+      <view class='label' bindtap="delsingle" data-id="{{item.goods_id}}" data-goods_id="{{item.id}}">
+        <image wx:if="{{item.selects}}" src='/images/choice_y.png'></image>
+        <image wx:else src='/images/choice_n.png'></image>
+      </view>
+      <view class='content'>
+        <image src='{{item.goods_image}}'></image>
+        <view class='text'>
+          <view class='titles'>{{item.goods_name}}</view>
+          <view class='spec'>{{item.spec_name}}</view>
+          <view class='price'>
+            <text>¥{{item.goods_price}}</text>
+          </view>
+          <view class='title'>
+            <text class='{{item.num==1?"prohibit":""}}' bindtap='reduceFun' data-item="{{item.goods_id}}" >-</text>
+            <input type="number" bindchange="bindManual" data-item="{{item.goods_id}}" value='{{item.goods_num}}'></input>
+            <text bindtap='plusFun' data-item="{{item.goods_id}}">+</text>
+          </view>
+        </view>
+      </view>
+      <!-- <view class='del-btn' bindtap='delItemFun' data-member_uid="{{item.member_uid}}" data-id='{{item.id}}'> -->
+        <!-- 删除 -->
+      <!-- </view> -->
+    </view>
+  </scroll-view>
+  <view class='bottom' style='height:10vh' wx:if="{{!isEdit}}">
+    <view class='left'>
+      <view class='text'>
+        <view class='label' style='padding-left:16px;' wx:if="{{!isEdit}}" bindtap='allselection'>
+          <image wx:if="{{total}}" src='/images/choice_y.png'></image>
+          <image wx:else src='/images/choice_n.png'></image>
+        </view>
+        <text style='padding-left:10px;' bindtap='allselection' wx:if="{{!isEdit}}">全选</text>
+        <text style='padding-left:10px;' wx:if="{{isEdit}}"></text>
+      </view>
+      <view class='total-price' wx:if="{{!isEdit}}">
+        合计:<text style='color:#ff5f19;margin-right:10px;'>￥{{totalPrice}}</text>
+        <view style='font-size: 10px;margin-right:10px;'>不含运费</view>
+      </view>
+    </view>
+    <view class='{{totalPrice>0?"right":"right prohibit"}}' bindtap="closeFun"  wx:if="{{!isEdit}}">
+      结算
+    </view>
+    <!-- <view  class='{{totalPrice>0.1?"right":"right prohibit"}}' bindtap="delFun" wx:if="{{isEdit}}">
+      删除
+    </view> -->
+  </view>
+  <view class='bottom' style='height:10vh' wx:if="{{isEdit}}" >
+    <!-- <view>111</view> -->
+    <view class='left'>
+      <view class='text'>
+        <view class='label' style='padding-left:16px;' bindtap='delallselection'>
+          <image wx:if="{{deltotal}}" src='/images/choice_y.png'></image>
+          <image wx:else src='/images/choice_n.png'></image>
+        </view>
+        <text style='padding-left:10px;' bindtap='delallselection'>全选</text>
+        <text style='padding-left:10px;'></text>
+      </view>
+    </view>
+    <view class='right' bindtap="delItemFun">
+      删除
+    </view>
+  </view>
+</scroll-view>
+<scroll-view wx:if="{{list.length ==0}}">
+  <view class='img-center'>
+    <image src="http://shopdz.shopdz.cn/wap/img/cart.png" style='width:50px; height:50px;' class='coupon-null-img'></image>
+    <view class='coupon-tit'>购物车里空空如也，赶快去选购吧~</view>
+    <!-- <navigator class='content' hover-class="none" > -->
+      <text bindtap="jump" style="font-size:30rpc;color:#ab2b2b">继续购物</text>
+    <!-- </navigator> -->
+  </view>
+</scroll-view>
+
+<view class="js_dialog tip_dialog" id="" wx:if="{{!hasUserInfo && canIUse && usershow}}">
+  <!-- <view class="weui-mask"></view> -->
+  <view class="weui-dialog">
+  <view class="weui-dialog__te">微信登录</view>
+  <view class="weui-dialog__bd">
+  “shopDz”小程序申请获取您的昵称、头像等公开信息。
+  </view>
+  <view class="weui-dialog__ft">
+  <button open-type='getUserInfo' catchtap='hide_mask' bindgetuserinfo="getUserInfo" class="weui-dialog__btn weui-dialog__btn_primary">确认</button>
+  </view>
+  </view>
+</view>

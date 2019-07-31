@@ -1,0 +1,19 @@
+<view class="comment-con" wx:if="{{list.length >0}}" wx:for="{{list}}" wx:key>
+  <view class="name-time">
+    <view class="name1">
+      <image src="https://miniapp.shopdz.cn/static/img/default_user_image.png" class="person-head"></image>
+      <view class="comment-limit">{{item.geval_frommembername}}</view>
+    </view>
+    <view class="time1">{{item.geval_addtime_text}}</view>
+  </view>
+  <view class="comment-word">{{item.geval_content}}</view>
+  <view class="comment-spec">{{item.goods_spec}}</view>
+  <view class="con-img-list comment-img-list left refund-img-list">
+      <view class="liW imgW li" style="height: 78px;" wx:for="{{item.geval_image}}" wx:key wx:for-item="itemSrc">
+      <image src="{{itemSrc}}" catchtap="lookImage" data-img="{{itemSrc}}" data-src="{{item.geval_image}}" class="comment-img" style="display: inline-block; height: 78px;width:80px; left: -31px;"></image>
+      </view>
+    </view>
+</view>
+<view class='main' wx:if="{{list.length <0 || list.length == 0}}">
+  暂无评价
+</view>

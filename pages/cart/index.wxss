@@ -1,0 +1,278 @@
+/* pages/cart/index.wxss */
+.top{
+  display: flex;
+  line-height: 44px;
+  border-top: 1px solid #EDEDED;
+  border-bottom: 1px solid #EDEDED;
+  font-size: 14px;
+  padding: 0 16px;
+  align-items: center;
+}
+
+.top .city{
+  padding-left: 30px;
+  color: #999;
+}
+
+.top .edit-btn{
+  color: #6EA1F5;
+  /* flex-grow: 1; */
+  /* display: inline; */
+  position:fixed; 
+  right:20px;
+  /* display: flex; */
+  /* justify-content: flex-end; */
+}
+.top .edit-btns{
+  color: #6EA1F5;
+  /* flex-grow: 1; */
+  /* display: inline; */
+  position:fixed; 
+  /* right:20px; */
+  /* display: flex; */
+  /* justify-content: flex-end; */
+}
+
+.label{
+  width: 30px;
+  height:20px;
+}
+
+.label image {
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+
+.list .item{
+  display: flex;
+  border-bottom: 1px solid #EDEDED;
+  padding: 0 16px;
+  height: 118px;
+  align-items: center;
+}
+
+.list .label{
+  flex: 0 0 auto;
+  padding:10px 0;
+}
+
+.list .content{
+  flex-grow: 1;
+  display:flex;
+}
+
+.list .content image{
+  flex: 0 0 auto;
+  height: 94px;
+  width: 94px;
+  padding:10px;
+}
+
+.list .content .text{
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+.list .content .title{
+  height: 25px;
+  overflow: hidden;
+}
+
+.aa{
+  padding-top:40rpx;
+}
+
+.list .content .spec{
+  font-size: 12px;
+  color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 14px;    
+  max-height: 14px;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.list .content .price{
+  display: flex;
+  font-size: 14px;
+  padding-top:10px; 
+}
+
+.list .content .price text:nth-child(1){
+  color: #ff5f19;
+  flex: 1 0 50%;
+}
+
+.list .content .price text:nth-child(2){
+  color: #999999;
+  flex: 1 0 50%;
+  text-align: right;
+}
+
+.bottom{
+  display: flex;
+  font-size: 14px;
+}
+
+.bottom .left{
+  display: flex;
+  flex: 1 0 70%;
+  align-items: center;
+}
+
+.bottom .left .text{
+  display: flex;
+  flex: 0 0 50%;
+  
+}
+
+.bottom .left .total-price{
+  flex: 0 0 50%;
+  color: #333333;
+  text-align: right;
+}
+
+.bottom .right{
+  flex: 1 0 30%;
+  background: #ff5f19;
+  font-size: 17px;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 10vh;
+}
+
+.edit{
+  padding-right: 0px !important;
+}
+
+.edit .title{
+  display: flex;
+  width: 60%;
+  line-height: 24px;
+  text-align: center;
+  border: 1px solid #D5D5D5;
+  height: 24px !important;
+  margin: 10px 0;
+}
+.titles{
+  display: flex;
+  width: 60%;
+  /* line-height: 32px; */
+  text-align: center;
+  /* border: 1px solid #D5D5D5; */
+  /* height: 10px !important; */
+  /* margin: 10px 0; */
+}
+
+.edit .title input {
+  flex: 1 0 33.333%;
+  border-left: 1px solid #D5D5D5;
+  border-right: 1px solid #D5D5D5;
+  
+  /* padding-top:1px; */
+  /* height: 32px; */
+}
+
+.edit .title text {
+  flex: 1 0 33.333%;
+  height: 32px;
+  font-size: 18px;
+}
+
+.edit .del-btn{
+  line-height:118px;
+  width: 65px;
+  background: #ff5f19;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+}
+
+.prohibit{
+  background: #E5E5E5 !important;
+}
+
+.img-center {
+    text-align: center;
+}
+.coupon-null-img {
+    margin: 20px auto;
+}
+.coupon-tit {
+    color: #888;
+    letter-spacing: 2px;
+    font-weight: normal;
+    font-size: 30rpx;
+}
+
+
+
+
+
+
+.tip_dialog{
+width: 100%;
+height: 100%;
+background-color: rgba(0,0,0,0.5);
+position: fixed;
+top: 0;
+left: 0;
+z-index: 4999;
+}
+.tip_dialog .weui-dialog {
+position: fixed;
+z-index: 5000;
+width: 80%;
+max-width: 300px;
+top: 50%;
+left: 50%;
+-webkit-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+background-color: rgba(256,256,256,0.95);
+text-align: center;
+border-radius: 10rpx;
+overflow: hidden;
+}
+.tip_dialog .weui-dialog__bd {
+padding: 35rpx 90rpx 50rpx;
+color: #000;
+min-height: 40px;
+font-size: 28rpx;
+line-height: 1.5;
+word-wrap: break-word;
+word-break: break-all;
+text-align: left;
+}
+.tip_dialog .weui-dialog__ft {
+position: relative;
+line-height: 48px;
+font-size: 18px;
+display: -webkit-box;
+display: -webkit-flex;
+display: block;
+margin-bottom: 52rpx;
+overflow: hidden;
+}
+.tip_dialog .weui-dialog__te{
+color: #55B837;
+font-size: 36rpx;
+padding-top: 49rpx;
+display: block;
+margin: 0 auto
+}
+.tip_dialog .weui-dialog__btn {
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+background: transparent;
+
+width: 228rpx;
+height:68rpx;
+border-radius: 34rpx;
+box-sizing:border-box;
+color: #55B837;
+border:2rpx solid #55B837;
+line-height: 64rpx;
+font-size: 29rpx;
+}

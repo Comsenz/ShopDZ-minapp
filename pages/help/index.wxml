@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<import src="../../plugins/wxParse/wxParse.wxml"/>
+<view class='jiaju_2'>{{title}}</view>
+<view>
+  <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>

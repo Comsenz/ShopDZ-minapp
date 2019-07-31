@@ -1,0 +1,13 @@
+<view id="tab-content" class="tab-content">
+  <image src="http://shopdz.shopdz.cn/wap/img/helpimg.png"  class="help-img"></image>
+  <view class='title' wx:for="{{list}}" wx:key>
+    <navigator url="/pages/help/index?id={{item.article_id}}" hover-class="none">
+      <view class='fl left' >
+        {{item.article_title}}
+      </view>
+      <view class='fr right'>
+        <image src='/images/my_order.png'></image>
+      </view>
+    </navigator>
+  </view>
+</view>

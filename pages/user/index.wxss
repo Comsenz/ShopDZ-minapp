@@ -1,0 +1,300 @@
+.top{
+  height: 488rpx;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: url(http://shopdz.shopdz.cn/wap/img/mine-bg.png) no-repeat center center/cover;
+  /* filter: blur(15px); */
+}
+.top .img{
+  width: 160rpx;
+  height: 160rpx;
+  margin:72rpx auto 24rpx;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1rpx solid #fff;
+}
+.oper_{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 132rpx;
+  background-color: rgba(0,0,0,.2);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:space-around;
+}
+.oper_item{
+  box-sizing: border-box;
+  width: 33%;
+  height: 100%;
+  padding-top: 20rpx;
+}
+.oper_item image{
+  width: 100%;
+  height: 52rpx;
+}
+.oper_cont{
+  line-height: 1;
+  text-align: center;
+  font-size: 24rpx;
+  color: #fff;
+}
+.gezi{
+  width:100%;
+  overflow: hidden; 
+}
+.gezi_item{
+  width: 250rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+  height: 188rpx;
+  padding-top: 12rpx;
+  box-sizing: border-box;
+  float: left;
+}
+.gezi_item:nth-child(3n+2){
+  border-right: 1rpx solid #F0F0F0;
+  border-left: 1rpx solid #F0F0F0;
+}
+.gezi_item image{
+  width: 100%;
+  height: 100rpx;
+}
+.gezi_cont{
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.top .text{
+  text-align: center;
+  font-size: 14px;
+  color: #333333;
+  padding-top: 12rpx;
+}
+.item{
+  display: flex;
+  line-height: 40px;
+  border-bottom: 1px solid #dedede;
+  background: #fff;
+  padding: 0 16px;
+}
+
+.item .left{
+  flex: 1 0 50%;
+  font-size: 14px;
+  color: #333333;
+}
+
+.item .right{
+  flex: 1 0 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.item image{
+  width: 8px;
+  height: 15px;
+}
+
+.item text{
+  font-size: 12px;
+  color: #999999;
+  padding-right: 10px;
+}
+
+.icon{
+  border-bottom:1px solid #EDEDED; 
+  display: flex;
+  padding: 12px 0;
+}
+.icon image{
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+.icon text{
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 14px;
+  color: #333;
+  padding-top: 10px;
+}
+.icon navigator{
+  flex: 1 0 25%;
+}
+
+.sign-alert {
+	position: fixed;
+	top: 20%;
+	left: 10%;
+	width: 600rpx;
+	height: 624rpx;
+	z-index: 888;
+	/* display: none; */
+}
+.sign-alert image.sign-close-btn {
+	display: inline-block;
+	width: 60rpx;
+  height: 60rpx;
+	cursor: pointer;
+	margin-right: 14%;
+}
+.sign-alert .sign-close-box {
+	text-align: right;
+	padding-bottom: 48rpx;
+}
+.sign-alert-con {
+  background: url('http://shopdz.shopdz.cn/wap/img/signbg.png') repeat;
+  background-size: 100% 100%;
+  min-height: 500rpx;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+.add-integral {
+  color: #666;
+  font-size: 30rpx;
+  padding: 100rpx 0 20rpx 0;
+  text-align: center;
+}
+.add-integral-num {
+  color: #ab2b2b;
+  font-size: 50rpx;
+  padding-right: .60rpx;
+  font-weight: bold;
+}
+.sign-alert-icon {
+  display: block;
+  margin: 0 auto;
+  width: 192rpx;
+  height: 150rpx;
+}
+.sign-alert-codebtn {
+  width: 40%;
+  margin: 24rpx auto;
+  background: #b8011a;
+  height: 62rpx;
+  color: #fff;
+  line-height:62rpx;
+  border-radius: 5rpx !important;
+  font-size: 28rpx;
+}
+.gary{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 11;
+}
+.alertbox {
+    position: fixed;
+    z-index: 10001;
+    width: 80%;
+    /* width: 432px;  */
+    left: 10%;
+    background: rgb(240, 234, 234);
+    top: 30%;
+    /* border-radius: 3px; */
+    -webkit-border-radius: 3px;
+    /* -moz-border-radius: 3px;   */
+    /* -o-border-radius: 3px; */
+    display: block;
+    /* display: none; */
+}
+.alert-p {
+    font-size: 40rpx;
+    color: #666;
+    text-align: center;
+    line-height: 3;
+}
+.btnbox1 {
+    height: 80rpx;
+    border-top: 1px solid #bdb9b9;
+}
+.surebtn1 {
+    width: 100%;
+    height: 100%;
+    line-height: 80rpx;
+    float: left;
+    -webkit-box-sizing: border-box; 
+    font-size: 36rpx;
+    text-align: center;
+    cursor: pointer;
+    color: #AB2B2B;
+    display: inline-block;
+}
+
+
+
+
+.tip_dialog{
+width: 100%;
+height: 100%;
+background-color: rgba(0,0,0,0.5);
+position: fixed;
+top: 0;
+left: 0;
+z-index: 4999;
+}
+.tip_dialog .weui-dialog {
+position: fixed;
+z-index: 5000;
+width: 80%;
+max-width: 300px;
+top: 50%;
+left: 50%;
+-webkit-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+background-color: rgba(256,256,256,0.95);
+text-align: center;
+border-radius: 10rpx;
+overflow: hidden;
+}
+.tip_dialog .weui-dialog__bd {
+padding: 35rpx 90rpx 50rpx;
+color: #000;
+min-height: 40px;
+font-size: 28rpx;
+line-height: 1.5;
+word-wrap: break-word;
+word-break: break-all;
+text-align: left;
+}
+.tip_dialog .weui-dialog__ft {
+position: relative;
+line-height: 48px;
+font-size: 18px;
+display: -webkit-box;
+display: -webkit-flex;
+display: block;
+margin-bottom: 52rpx;
+overflow: hidden;
+}
+.tip_dialog .weui-dialog__te{
+color: #55B837;
+font-size: 36rpx;
+padding-top: 49rpx;
+display: block;
+margin: 0 auto
+}
+.tip_dialog .weui-dialog__btn {
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+background: transparent;
+
+width: 228rpx;
+height:68rpx;
+border-radius: 34rpx;
+box-sizing:border-box;
+color: #55B837;
+border:2rpx solid #55B837;
+line-height: 64rpx;
+font-size: 29rpx;
+}

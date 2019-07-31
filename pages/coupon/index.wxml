@@ -1,0 +1,52 @@
+<view style='height:100vh;'>
+  <view class='tab'>
+    <view bindtap='tabFun' data-index="1">
+      <text class='{{tabIndex==1?"active":""}}'>未使用</text>
+    </view>
+    <view bindtap='tabFun' data-index="2">
+      <text class='{{tabIndex==2?"active":""}}'>已使用</text>
+    </view>
+    <view bindtap='tabFun' data-index="3">
+      <text class='{{tabIndex==3?"active":""}}'>已过期</text>
+    </view>
+  </view>
+ <view id="tab-content" class="tab-content">
+  <view class="show voucher-list">
+    <view class="coupon-list" id="tab-contentul">
+      <view class="coupon-li" wxif="{{list.length >0}}"  wx:for="{{list}}" wx:key >
+        <view class="coupon-box-det coupon-det">
+          <view class='coupon-box-top {{item.rpacket_t_wx_card_id?"Color010":"Color011"}}'>
+          <!-- <view wx:else class="coupon-box-top Color011"> -->
+            <view class="coupon-top-con">
+              <view class="zoom">
+                <view class="coupon-subtit left">{{item.rpacket_title}}</view>
+                <!-- <view class="count-limit right">每人限领5张</view> -->
+              </view>
+              <view class="zoom couponMoney-box">
+                <view class="left">
+                  <view class="money-unit">¥</view>
+                  <view class="money-num">{{item.rpacket_price}}</view>
+                </view>
+                <view class="right">
+                  <image wx:if="{{item.rpacket_t_wx_card_id}}" src="http://shopdz.shopdz.cn/wap/img/wx_statu.png" style='width:80px' class="coupon-statu sc-statu"></image> 
+                  <image wx:else src="https://miniapp.shopdz.cn/wap/img/sc_statu.png" style='width:80px' class="coupon-statu sc-statu"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="coupon-box-bottom">
+            <view class="coupon-bottom-tit">订单满{{item.rpacket_limit}}元（含运费）</view>
+            <view class="coupon-remind2">有效期：{{item.start}}-{{item.end}}</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{list.length ==0 || list.length <0}}">  
+        <view  class='img-center'>
+          <image src="https://miniapp.shopdz.cn/wap/img/coupon-null.png" style='width:80px; height:90px;' class='coupon-null-img'></image>
+          <view class='coupon-tit'>暂无优惠券</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>

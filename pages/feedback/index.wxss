@@ -1,0 +1,32 @@
+page{
+  padding-bottom: 96rpx;
+  background-color: #eee;
+}
+.tab-content {
+    padding-bottom: 40rpx;
+}
+.title{
+  display: flex;
+  line-height: 40px;
+  border-bottom: 1px solid #dedede;
+  background: #fff;
+  padding: 0 16px;
+}
+
+navigator{
+  width: 100%;
+}
+.title .left{
+  flex: 1 0 50%;
+  font-size: 14px;
+  color: #333333;
+}
+
+.title image{
+  width: 8px;
+  height: 15px;
+}
+.help-img{
+  width: 100%;
+  height: 185px;
+}

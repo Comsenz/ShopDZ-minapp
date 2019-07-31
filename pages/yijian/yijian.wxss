@@ -1,0 +1,41 @@
+/* pages/yijian/yijian.wxss */
+.page{
+  border-top: 1rpx solid #F0F0F0;
+  padding-bottom: 108rpx;
+}
+.qidai{
+  width: 680rpx;
+  height: 300rpx;
+  border: 1rpx solid rgb(124, 124, 124);
+  font-size: 28rpx;
+  margin: 20rpx auto 80rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.sheng{
+  position: absolute;
+  bottom:14rpx;
+  right: 20rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+.tel_tel{
+  font-size: 28rpx;
+  margin: 0 35rpx 0;
+  line-height: 38rpx;
+  border-bottom: 1rpx solid rgb(124, 124, 124);
+}
+._tijiao{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 108rpx;
+  line-height: 108rpx;
+  background-color: #AB2B2B;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 0
+}

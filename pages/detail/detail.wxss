@@ -1,0 +1,139 @@
+/* pages/detail/detail.wxss */
+view{
+  box-sizing: border-box;
+}
+page{
+  height: 100%
+}
+._main{
+  background-color: #F5F5F5;
+  height: 100%;
+  overflow: auto;
+}
+._main>view{
+  border-top: 1rpx solid #F0F0F0;
+  border-bottom: 1rpx solid #F0F0F0;
+  background-color: #fff;
+  margin-bottom: 30rpx;
+  padding: 0 36rpx;
+}
+.oprea{
+  height: 62rpx;
+  line-height: 62rpx;
+  margin:24rpx 0;
+  font-size: 28rpx;
+}
+.detail_btn{
+  width: 140rpx;
+  height: 62rpx;
+  border: 1rpx solid #BEBEBE;
+  text-align: center;
+  line-height: 60rpx;
+}
+.detail_btn.a{
+  border: 1rpx solid #A60C05;
+  color: #A60C05;
+  margin-left: 30rpx;
+}
+
+.center_item{
+  overflow: hidden;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+.center_item:last-child{
+  border-bottom: 0;
+}
+.center_img{
+  width: 140rpx;
+  height: 140rpx;
+  overflow: hidden;
+}
+.center_img image{
+  width: 100%;
+  height: 100%;
+}
+.guige{
+  width: 518rpx;
+  padding-top: 20rpx;
+  font-size: 26rpx;
+}
+.guige_bar{
+  height: 50rpx;
+  line-height: 50rpx;
+  overflow: hidden
+}
+.footer_{
+  padding:  24rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+.footer_:last-child{
+  border-bottom: 0;
+}
+.footer_bar{
+  font-size: 26rpx;
+  overflow: hidden;
+}
+.footer_bar .fl{
+  line-height: 46rpx;
+}
+.w140{
+  width: 140rpx;
+}
+.c_red{
+  color: #A60C05
+}
+._pary{
+  color: #7E7D7A
+}
+._parys{
+  color: rgb(252, 98, 98)
+}
+.alertbox {
+    position: fixed;
+    z-index: 10001;
+    width: 80%;
+    /* width: 432px;  */
+    left: 10%;
+    background: #fff;
+    top: 30%;
+    /* border-radius: 3px; */
+    -webkit-border-radius: 3px;
+    /* -moz-border-radius: 3px;   */
+    /* -o-border-radius: 3px; */
+    display: block;
+    /* display: none; */
+}
+.alert-p {
+    font-size: 40rpx;
+    color: #666;
+    text-align: center;
+    line-height: 3;
+}
+.btnbox1 {
+    height: 80rpx;
+    border-top: 1px solid #f0f0f0;
+}
+.cancelbtn1  {
+    width: 50%;
+    height: 100%;
+    line-height: 80rpx;
+    float: left;
+     border-right: 1px solid #f0f0f0;
+    -webkit-box-sizing: border-box; 
+    font-size: 36rpx;
+    text-align: center;
+    cursor: pointer;
+}
+.surebtn1 {
+    width: 50%;
+    height: 100%;
+    line-height: 80rpx;
+    float: left;
+    -webkit-box-sizing: border-box; 
+    font-size: 36rpx;
+    text-align: center;
+    cursor: pointer;
+    color: #AB2B2B;
+    display: inline-block;
+}

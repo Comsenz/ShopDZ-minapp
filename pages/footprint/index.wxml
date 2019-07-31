@@ -1,0 +1,29 @@
+<view class="myorder1" wx:if="{{list.length>0}}"  style="margin-bottom: 1rem;">
+  <view class="order-dl2" wx:for="{{list}}" wx:key >
+    <view class="left dt">
+      <navigator url="/pages/details/index?id={{item.common_goods_id}}" hover-class="none">
+        <image src="{{item.goods_image}}" class="order-img1 img-bg"></image>
+      </navigator>
+    </view>
+    <view>
+      <view class="dd-left left dd">
+        <navigator url="/pages/details/index?id={{item.common_goods_id}}" hover-class="none">
+          <view class="dd-p1 margin-t1" style="width:190px;height:21px;overflow:hidden;">{{item.goods_name}}</view>
+          <view class="dd-p2">¥{{item.log_price}}</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{list.length == 0 || list.length < 0}}">
+  <view class='img-center'>
+    <image src="http://shopdz.shopdz.cn/wap/img/collectNull.png" style='width:100px; height:100px;' class='coupon-null-img'></image>
+    <view class='coupon-tit'>您还没有关注任何商品</view>
+    <view class='coupon-title'>可以去看看哪些商品值得收藏</view>
+  </view>
+  <view class="alert-codebtn spread-btn" bindtap="jump">
+    <!-- <navigator url="/pages/index/index" hover-class="none" > -->
+      <text class='text'>随便逛逛</text>
+    <!-- </navigator> -->
+  </view>
+</view>

@@ -1,0 +1,206 @@
+@import "../../plugins/wxParse/wxParse.wxss";
+.main{
+ 
+  height: 100vh;
+  background: #e8e9e8;
+}
+.item{
+  display: flex;
+  border-bottom: 1px solid #d8d8d8;
+  line-height: 40px;
+  padding: 15px 0 0 0;
+  
+}
+.address-default {
+    height: 60rpx;
+    background: #fafafa;
+    line-height: 1.2;
+    text-align: center;
+}
+.address-check {
+    margin: 1rpx 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+.check-box {
+    position: relative;
+    background: url(http://shopdz.shopdz.cn/wap/img/cb-selected.png) no-repeat top center;
+    background-size: 100% 100%;
+    width: 40rpx;
+    height: 40rpx;
+    /* margin: 60rpx auto; */
+}
+.checks-box {
+    position: relative;
+    background: url(http://shopdz.shopdz.cn/wap/img/cb-normal.png) no-repeat top center;
+    /* /img/cb-normal.png */
+    background-size: 100% 100%;
+    width: 40rpx;
+    height: 40rpx;
+    /* margin: 60rpx auto; */
+}
+.check-box input[type=checkbox] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    z-index: 89;
+    opacity: 0;
+}
+input[type="checkbox"] {
+    -webkit-appearance: none;
+}
+.remind4 {
+    color: #999;
+    font-size: 30rpx;
+    display: inline-block;
+    vertical-align: middle;
+}
+.data{
+  background: #fff;
+  padding: 0 20px;
+}
+.item text {
+  flex: 0 1 30%;
+  font-size: 14px;
+  color: #333333;
+}
+
+.item input{
+  flex: 1 1 auto;
+  font-size: 14px;
+  color: #333333;
+  line-height: 40px;
+  height: 40px;
+}
+
+.item .code{
+    flex: 0 1 25%;
+    font-size: 12px;
+    color:#ff5f19;
+    border-left: 1px solid #d8d8d8;
+    text-align: center;
+    height: 24px;
+    margin: 8px 0;
+    line-height: 24px;
+}
+
+.item .icon{
+  flex: 0 1 10%;
+  text-align: right;
+}
+
+.item picker{
+ flex: 1 1 auto;
+ font-size:16px;
+}
+
+.item .icon image{
+  width:8px;
+  height:15px;
+}
+
+.text{
+  font-size: 12px;
+  color: #999999;
+  background: #fff;
+  padding: 10px 20px;
+}
+
+.btn{
+  line-height: 46px;
+  background: #E5E5E5;
+  font-size: 18px;
+  color: #FFFFFF;
+  text-align:center;
+  margin:50px 30px;
+  border-radius:2px;
+}
+.active{
+  background:#ff5f19;
+}
+.verification {
+    /* position: absolute; */
+    top: .25rpx;
+    right: 25rpx;
+    display: inline-block;
+    width: 250rpx;
+    height: 70rpx;
+    border: 1px solid #ccc;
+}
+.send-out {
+    /* position: absolute; */
+    top: 25rpx;
+    right: 25rpx;
+    width: 250rpx;
+    height: 60rpx;
+    font-size: 29rpx;
+    /* background: #ccc; */
+    color: #fff;
+    line-height: 60rpx;
+    text-align: center;
+    letter-spacing: 1px;
+    /* border-radius: 5px; */
+    /* -webkit-border-radius: 5px; */
+    /* -moz-border-radius: 5px;
+    -o-border-radius: 5px; */
+}
+.send-out-bg {
+    background: #ab2b2b;
+    cursor: pointer;
+}
+
+.time{
+  background-color: #ccc;
+  color: #fff;
+}
+.time .s{
+  display: inline-block;
+  color: #AB2B2B;
+}
+.item .icon{
+  flex: 0 1 10%;
+  text-align: right;
+}
+
+.item picker{
+ flex: 1 1 auto;
+ font-size:16px;
+}
+
+.item .icon image{
+  width:8px;
+  height:15px;
+}
+.item picker{
+ flex: 1 1 auto;
+ font-size:16px;
+}
+
+
+.item.more{
+  border: 0;
+}
+.item.more text{
+  width: 40%!important;
+}
+.more .tab{
+  float: right;
+  width: 70%;
+  text-align: right;
+  padding-right: 50rpx;
+  font-size: 14px;
+  color: #999;
+  background: url('http://shopdz.shopdz.cn/wap/img/jt-r.png') no-repeat right center/33rpx 33rpx;
+}
+.tixian{
+  width: 750rpx;
+  height: 110rpx;
+  line-height: 110rpx;
+  background-color: #FAFAFA;
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+  border-top: 30rpx solid #E8E9E8;
+}

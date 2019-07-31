@@ -1,0 +1,97 @@
+<view class="myorder2" wx:if="{{type==1}}">
+  <view class="refund-product-tit">我的退款申请</view>
+  <view class="myorder2-det">
+    <view class="myorder2-det-span left">退款编号：</view>
+    <view class="myorder2-det-p left">{{data.order_sn}}</view>
+    <view class="myorder2-det-span left">退款原因：</view>
+    <view class="myorder2-det-p left">{{data.causes_name}}</view>
+    <view class="myorder2-det-span left">退款金额：</view>
+    <view class="myorder2-det-p left">￥{{data.refund_amount}}</view>
+    <view class="myorder2-det-span left">退款说明：</view>
+    <view class="myorder2-det-p left">{{data.causes}}</view>
+    <view class="myorder2-det-span left">凭证上传：</view>
+    <view class="con-img-list comment-img-list left refund-img-list">
+      <view class="liW imgW li" style="height: 78px;" wx:for="{{data.refund_images}}" wx:key>
+      <image src="{{item}}" class="comment-img" style="display: inline-block; height: 78px; left: -31px;"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="myorder2" wx:if="{{type==1}}">
+  <view class="refund-product-tit">商品信息</view>
+    <view class='detail_center'>
+      <view class='center_item' wx:for="{{list}}" wx:key>
+        <view class='fl center_img'>
+          <image mode="aspectFill" src='{{item.goods_image}}'></image>
+        </view>
+        <view class='fr guige'>
+          <view class='guige_bar'>
+            <view class='fl _pary'>{{item.goods_name}}</view>
+            <view class='fr'>× {{item.goods_num}}</view>
+          </view>
+          <view class='guige_bar'>
+            <view class='fl _pary'>{{item.goods_spec}}</view>
+            <view class='fr'>￥ {{item.goods_price}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+</view>
+<view class="myorder2" wx:if="{{type==1}}">
+  <view class="refund-product-tit">商品退款处理</view>
+  <view class="myorder2-det">
+    <view class="myorder2-det-span left">审核状态：</view>
+    <view class="myorder2-det-p left">{{data.status_text}}</view>
+    <view class="myorder2-det-span left">审核备注：</view>
+    <view class="myorder2-det-p left">{{data.remark}}</view>
+  </view>
+</view>
+
+<view class="myorder2" wx:if="{{type==2}}">
+  <view class="refund-product-tit">我的退货申请</view>
+  <view class="myorder2-det">
+    <view class="myorder2-det-span left">退货编号：</view>
+    <view class="myorder2-det-p left">{{data_list.order_sn}}</view>
+    <view class="myorder2-det-span left">退货原因：</view>
+    <view class="myorder2-det-p left">{{data_list.causes_name}}</view>
+    <view class="myorder2-det-span left">退货金额：</view>
+    <view class="myorder2-det-p left">￥{{data_list.return_amount}}</view>
+    <view class="myorder2-det-span left">退货说明：</view>
+    <view class="myorder2-det-p left">{{data_list.causes}}</view>
+    <view class="myorder2-det-span left">凭证上传：</view>
+    <view class="con-img-list comment-img-list left refund-img-list">
+      <view class="liW imgW li" style="height: 78px;" wx:for="{{data_list.return_images}}" wx:key>
+      <image src="{{item}}" class="comment-img" style="display: inline-block; height: 78px; left: -31px;"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="myorder2" wx:if="{{type==2}}">
+  <view class="refund-product-tit">商品信息</view>
+    <view class='detail_center'>
+      <view class='center_item'>
+        <view class='fl center_img'>
+          <image mode="aspectFill" src='{{data_list.goods_image}}'></image>
+        </view>
+        <view class='fr guige'>
+          <view class='guige_bar'>
+            <view class='fl _pary'>{{data_list.goods_name}}</view>
+            <view class='fr'>× {{data_list.goods_num}}</view>
+          </view>
+          <view class='guige_bar'>
+            <view class='fl _pary'>{{data_list.goods_spec}}</view>
+            <view class='fr'>￥ {{data_list.goods_price}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+</view>
+<view class="myorder2" wx:if="{{type==2}}">
+  <view class="refund-product-tit">商品退款处理</view>
+  <view class="myorder2-det">
+    <view class="myorder2-det-span left">审核状态：</view>
+    <view class="myorder2-det-p left">{{data_list.status_text}}</view>
+    <view class="myorder2-det-span left">审核备注：</view>
+    <view class="myorder2-det-p left">{{data_list.remark}}</view>
+  </view>
+</view>

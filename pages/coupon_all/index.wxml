@@ -1,0 +1,61 @@
+<view class="integral-box">
+  <view class="current-integral">当前积分</view>
+  <view class="integral-num">{{total}}</view>
+  <view class="detailbtn-box">
+    <navigator url="/pages/integral/index" hover-class="none">
+      <text class='integral-detailbtn'>积分明细</text>
+    </navigator>
+  </view>
+</view>
+<view id="tab-content" class="tab-content">
+  <view class="show voucher-list">
+    <view class="coupon-list" id="tab-contentul">
+      <view class="coupon-li" wx:if="{{list.length >0}}" wx:for="{{list}}" wx:key>
+        <view class="coupon-box-det coupon-det">
+          <view class="coupon-box-top Color010">
+            <view class="coupon-top-con" bindtap="add_coupon" data-id='{{item.rpacket_t_id}}'>
+              <view class="zoom">
+                <view class="coupon-subtit left">{{item.rpacket_t_title}}</view>
+                <view class="count-limit right">{{item.limit_num}}</view>
+              </view>
+              <view class="zoom couponMoney-box">
+                <view class="left">
+                  <view class="money-unit">¥</view>
+                  <view class="money-num">{{item.rpacket_t_price}}</view>
+                </view>
+                <view class="right">
+                  <view class="coupon-share" wx:if="{{item.rpacket_t_wx == 0}}">
+										<input type="submit" value="{{item.rpacket_t_points}}积分兑换" disabled="true" class="coupon-share"></input>
+									</view>
+                  <image wx:if="{{item.rpacket_t_wx == 1}}" src="http://shopdz.shopdz.cn/wap/img/wx_statu.png" style='width:80px' class="coupon-statu sc-statu"></image> 
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="coupon-box-bottom">
+            <view class="coupon-bottom-tit">订单满{{item.rpacket_t_limit}}元（含运费）</view>
+            <view class="coupon-remind2">有效期：{{item.t_start}}-{{item.t_end}}</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{list.length ==0 || list.length <0}}">  
+        <view  class='img-center'>
+          <image src="https://miniapp.shopdz.cn/wap/img/coupon-null.png" style='width:80px; height:90px;' class='coupon-null-img'></image>
+          <view class='coupon-tit'>暂无优惠券</view>
+        </view>
+      </view>
+      <navigator url="/pages/coupon/index" hover-class="none">
+        <view class='btn'>
+          我的优惠券
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>
+<view class="alertbox" wx:if="{{is_display}}">	
+  <view class="alert-p">是否确认领取？</view>	
+  <view class="btnbox1">		
+    <view class="cancelbtn1" bindtap="cancel">取消</view>		
+    <view class="surebtn1" bindtap='add_coupon' >确定</view>	
+  </view>
+</view>

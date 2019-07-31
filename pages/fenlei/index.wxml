@@ -1,0 +1,65 @@
+<!--index.wxml-->
+<import src="../../plugins/wxParse/wxParse.wxml"/>
+<view>
+  <view class='touch_' bindtouchstart='touchStart' bindtouchend="touchEnd">
+    <block  wx:if="{{!is_display}}">
+      <view wx:for="{{replyTemArray}}" wx:key="">
+        <view  hidden="{{index == goodindex ? false : true}}" class="tmphtml">
+        <template is="wxParse" data="{{wxParseData:item}}"/>
+        </view>
+      </view>
+        <view class='jiaju_2' wx:if="{{gc_name}}">{{gc_name}}</view>
+      <view class='shops'>
+        <view wx:for='{{goods_list}}' wx:key class='shops_item'>
+          <navigator hover-class="none" url="/pages/details/index?id={{item.goods_common_id}}">
+          <view class='item_img' >
+            <image src='{{item.goods_image}}'></image>
+          </view>
+          <view class='item_tit'>{{item.goods_name}}</view>
+          <view class='item_price'>{{item.goods_price}}</view>
+          </navigator >
+        </view>
+      </view>
+      <view wx:if="{{goods_list.length<0}}">
+          <view class='item_tit'>{{item.goods_name}}</view>
+      </view>
+    </block>
+    <image class='gotobtn'  wx:if="{{!is_display}}" bindtap='gotobtn' src='../../img/toggle2.png'></image>
+  </view>
+  <!-- 蒙层 -->
+  <view class='mark' catchtouchmove='prevenD' catchtap='hideList' hidden='{{showList!=1}}'></view>
+  <!-- 菜单切换 -->
+  <view class='objeck {{showList==1?"showObj":(showList==2?"hideObj":"")}}' catchtouchmove='prevenD'>
+    <view class='obj_top'>
+      <view class='fl obj_input'>
+        <input class='fl' bindinput="bindKeyName" placeholder='搜索' bindconfirm='search'></input>
+        <image class='fr' src='../../img/searchbtn.png' bindtap='search'></image>
+      </view>
+      <!-- <view class='fr'>登录</view> -->
+    </view>
+    <view class='obj_content'>
+      <scroll-view scroll-y='true' class='fl obj_list'>
+        <view class='obj_item {{currentFlag==index?"active":""}}' wx:for="{{object}}" data-index='{{index}}' wx:key bindtap='_switch'>{{item.gc_name}}</view>
+      </scroll-view> 
+      <scroll-view scroll-y='true' class='fr obj_option'>
+        <view class='fl option_item' wx:for="{{object[currentFlag].child}}" wx:key>
+          <navigator url="/pages/fenlei_detail/index?id={{item.gc_id}}">
+            <image src='{{item.gc_image}}' class="cc"  data-id='{{item.gc_id}}'></image>
+            <view data-id='{{item.gc_id}}'>{{item.gc_name}}</view>
+          </navigator>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <view class="js_dialog tip_dialog" id="" wx:if="{{!hasUserInfo && canIUse && usershow}}">
+    <view class="weui-dialog">
+    <view class="weui-dialog__te">微信登录</view>
+    <view class="weui-dialog__bd">
+    “shopDz”小程序申请获取您的昵称、头像等公开信息。
+    </view>
+    <view class="weui-dialog__ft">
+    <button open-type='getUserInfo' catchtap='hide_mask' bindgetuserinfo="getUserInfo" class="weui-dialog__btn weui-dialog__btn_primary">确认</button>
+    </view>
+    </view>
+  </view>
+</view>

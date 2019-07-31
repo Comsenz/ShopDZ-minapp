@@ -1,0 +1,123 @@
+<!--index.wxml-->
+<import src="../../plugins/wxParse/wxParse.wxml"/>
+<view bindtouchstart = "handletouchtart" bindtouchmove="handletouchmove" bindtouchend="handletouchend">
+  <view class='head'>
+    <view class='fl toggle' bindtap='showList'><image src='../../img/toggle1.png'></image></view>
+    <view class='logo'  bindtap='jump' data-name='首页'><image src='../../img/logo.png'></image></view>
+    <view class='fr cart' wx:if='{{showList!=1}}'>
+      <image src='../../img/cart.png' bindtap='showCart'></image>
+      <view class="shop-cart-have" wx:if="{{num !=0}}">{{num}}</view>
+    </view>
+    <view class='fr toggle' wx:if='{{showList==1}}' bindtap='showList'>
+      <image src='../../img/toggle1.png'></image>
+    </view>
+  </view>
+
+  <view class='main'>
+    <view class='navgation' wx:if="{{is_display}}">
+      <view class='go_index' wx:for="{{items}}" wx:key>
+        <image src='{{item.img}}' bindtap='jump' data-name='{{item.title}}'></image>
+        <view class='txt'>{{item.title}}</view>
+      </view>
+    </view>
+    <!-- banner -->
+    <swiper class='banner' circular='true' indicator-dots='true' autoplay='true' interval="{{interval}}" duration="{{duration}}" wx:if="{{is_display}}">
+      <block wx:for="{{imgUrls}}" wx:key>
+        <swiper-item>
+          <image src="{{item.img}}" bindtap='banner' data-id='{{item.data}}' data-type='{{item.type}}' class="slide-image" width="355" height="150" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- <view class="tmphtml">
+      专题
+    </view> -->
+    <block wx:for='{{goodsInfo}}' wx:if="{{is_display}}" wx:key wx:for-index="goodindex" wx:for-item="info">
+      <view wx:for="{{replyTemArray}}" wx:key="">
+        <view  hidden="{{index == goodindex ? false : true}}">
+        <template is="wxParse" data="{{wxParseData:item}}"/>
+        </view>
+      </view>
+      <view class='shops'>
+        <view wx:for='{{info.goods_info}}' wx:key class='shops_item'>
+          <navigator hover-class="none" url="/pages/details/index?id={{item.goods_common_id}}">
+          <view class='item_img' >
+            <image src='{{item.goods_image}}'></image>
+          </view>
+          <view class='item_tit'>{{item.goods_name}}</view>
+          <view class='item_price'>{{item.goods_price}}</view>
+          </navigator >
+        </view>
+      </view>
+    </block>
+    <block  wx:if="{{!is_display}}" wx:key>
+      <view wx:for="{{replyTemArray}}" wx:key="">
+        <view  hidden="{{index == goodindex ? false : true}}" class="tmphtml">
+        <template is="wxParse" data="{{wxParseData:item}}"/>
+        </view>
+      </view>
+      <!-- <view  class='jiaju'> -->
+        <!-- <view class='fl jiaju_1'>家居</view> -->
+        <view class='jiaju_2' wx:if="{{gc_name}}">{{gc_name}}</view>
+      <!-- </view> -->
+      <view class='shops'>
+        <view wx:for='{{goods_list}}' wx:key class='shops_item'>
+          <navigator hover-class="none" url="/pages/details/index?id={{item.goods_common_id}}">
+          <view class='item_img' >
+            <image src='{{item.goods_image}}'></image>
+          </view>
+          <view class='item_tit'>{{item.goods_name}}</view>
+          <view class='item_price'>{{item.goods_price}}</view>
+          </navigator >
+        </view>
+      </view>
+      <view wx:if="{{goods_list.length<0}}">
+          <view class='item_tit'>{{item.goods_name}}</view>
+      </view>
+    </block>
+    <view wx:if="{{is_footer}}" class="{{is_display? 'footer' : 'footer1'}}">
+      <view class='btn_box'>
+        <view class='fl btn1' bindtap='jump' data-name='首页' >商城首页</view>
+        <view class='fr btn2' bindtap='jump' data-name='个人中心'>个人中心</view>
+      </view>
+      <view class='footer_txt'>ICP证 {{footer_data.record_number}}</view>
+      <view class='footer_txt'>{{footer_data.footer_info}}</view>
+    </view>
+  </view>
+</view>
+<!-- 蒙层 -->
+<view class='mark' catchtouchmove='prevenD' catchtap='hideList' hidden='{{showList!=1}}'></view>
+<!-- 菜单切换 -->
+<view class='objeck {{showList==1?"showObj":(showList==2?"hideObj":"")}}' catchtouchmove='prevenD'>
+  <view class='obj_top'>
+    <view class='fl obj_input'>
+      <input class='fl' bindinput="bindKeyName" placeholder='搜索'></input>
+      <image class='fr' src='../../img/searchbtn.png' bindtap='search'></image>
+    </view>
+    <!-- <view class='fr'>登录</view> -->
+  </view>
+  <view class='obj_content'>
+    <scroll-view scroll-y='true' class='fl obj_list'>
+      <view class='obj_item {{currentFlag==index?"active":""}}' wx:for="{{object}}" data-index='{{index}}' wx:key bindtap='_switch'>{{item.gc_name}}</view>
+    </scroll-view> 
+    <scroll-view scroll-y='true' class='fr obj_option'>
+      <view class='fl option_item' wx:for="{{object[currentFlag].child}}" bindtap='details_list' data-id='{{item.gc_id}}' wx:key>
+        <image src='{{item.gc_image}}' data-id='{{item.gc_id}}'></image>
+        <view data-id='{{item.gc_id}}'>{{item.gc_name}}</view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<!-- 置顶按钮 -->
+<image class='gotobtn' wx:if="{{currentY != 0}}" bindtap='gotobtn' src='../../img/gotop.png'></image>
+<view class="js_dialog tip_dialog" id="" wx:if="{{!hasUserInfo && canIUse && usershow}}">
+  <!-- <view class="weui-mask"></view> -->
+  <view class="weui-dialog">
+  <view class="weui-dialog__te">微信登录</view>
+  <view class="weui-dialog__bd">
+  “shopDz”小程序申请获取您的昵称、头像等公开信息。
+  </view>
+  <view class="weui-dialog__ft">
+  <button open-type='getUserInfo' catchtap='hide_mask' bindgetuserinfo="getUserInfo" class="weui-dialog__btn weui-dialog__btn_primary">确认</button>
+  </view> 
+  </view>
+</view>

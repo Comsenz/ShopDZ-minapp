@@ -1,0 +1,137 @@
+<!--pages/detail/detail.wxml-->
+<view class='_main'>
+
+  <view class='detail_top'>
+    <view class='footer_'>
+      <view class='footer_bar'>
+        <view class='fl _pary'>下单时间：</view>
+        <view class='fl'>{{list.add_time}}</view>
+      </view>
+      <view class='footer_bar'>
+        <view class='fl _pary'>订单编号：</view>
+        <view class='fl'>{{list.order_sn}}</view>
+      </view>
+    </view>
+    <view class='oprea'>
+      <view class='fl c_red' wx:if="{{list.refund_state == 1}}">退款审核</view>
+      <view class='fl c_red' wx:if="{{list.refund_state == 2}}">正在退款</view>
+      <view class='fl c_red' wx:if="{{list.refund_state == 3}}">退款完成</view>
+      <view class='fl c_red' wx:if="{{list.refund_state == 4}}">拒绝退款</view>
+      <view class='fl c_red' wx:else >{{list.order_state_text}}</view>
+      <!-- <view class='fr detail_btn a'>付款</view> -->
+      <view wx:if="{{list.order_state ==0 || list.order_state <20 && list.ordertime < 1}}">
+        <view class='fr detail_btn a' bindtap="changeorder" data-id='{{list.order_sn}}'>删除订单</view>
+        <view class='fr detail_btn' wx:if="{{list.return_state == 0 && list.refund_state !=0}}">
+          <navigator url="/pages/refund_detail/index?refund_sn={{list.refund_sn}}&type=1" hover-class="none"> 
+              查看退款
+          </navigator>
+        </view>
+      </view>
+      <view wx:if="{{list.order_state == 10 && list.ordertime > 0}}">
+        <view class='fr detail_btn a' bindtap="buy" data-id="{{list.order_sn}}">付款</view>
+        <view class='fr detail_btn' bindtap="cancellation_order" data-id='{{list.order_sn}}'>取消订单</view>
+      </view>
+      <view wx:if="{{list.order_state == 20}}">
+        <view class='fr detail_btn a' wx:if="{{list.lock_state !=1 && list.return_state == 0 && list.refund_state ==0}}" bindtap="reason" data-id='{{list.order_sn}}'>申请退款</view>
+        <view class='fr detail_btn a' wx:else >
+          <navigator url="/pages/refund_detail/index?refund_sn={{list.refund_sn}}&type=1" hover-class="none"> 
+              查看退款
+          </navigator>
+        </view>
+      </view>
+      <view wx:if="{{list.order_state == 30}}">
+        <view class='fr detail_btn a' bindtap="receiving" data-id='{{list.order_sn}}' >确认收货</view>
+        <view class='fr detail_btn a' bindtap='return_goods' data-id='{{list.order_sn}}'>申请退货</view>
+        <view class='fr detail_btn a'>
+          <navigator url="/pages/logistics/index?order_sn={{list.order_sn}}" hover-class="none"> 
+              查看物流
+          </navigator>
+        </view>
+      </view>
+      <view wx:if="{{list.order_state == 40}}">
+        <view class='fr detail_btn a' bindtap="evaluate" data-id='{{list.order_sn}}'>商品评价</view>
+        <view class='fr detail_btn a' bindtap='return_goods' data-id='{{list.order_sn}}'>申请退货</view>
+        <view class='fr detail_btn a'>
+          <navigator url="/pages/logistics/index?order_sn={{list.order_sn}}" hover-class="none"> 
+              查看物流
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='detail_center' wx:for="{{list.gooddetails}}" wx:key>
+    <view class='center_item'>
+      <view class='fl center_img'>
+        <image mode="aspectFill" src='{{item.goods_image}}'></image>
+      </view>
+      <view class='fr guige'>
+        <view class='guige_bar'>
+          <view class='fl _pary'>{{item.goods_name}}</view>
+          <view class='fr'>× {{item.goods_num}}</view>
+        </view>
+        <view class='guige_bar'>
+          <view class='fl _pary'>{{item.goods_spec}}</view>
+          <view class='fr'>￥ {{item.goods_price}}</view>
+        </view>
+        <view class='guige_bar'>
+          <view class='fr'>￥ {{list.order_amount}}</view>
+          <view class='fr _parys'>实付：</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='detail_footer'>
+    <view class='footer_'>
+      <view class='footer_bar'>
+        <view class='fl w140'>{{list.buyinfo.reciver_info.true_name}}</view>
+        <view class='fl'>{{list.buyinfo.reciver_info.tel_phone}}</view>
+      </view>
+      <view class='footer_bar'>
+        <view class='fl'>{{list.buyinfo.reciver_info.area_info}} {{list.buyinfo.reciver_info.address}}</view>
+      </view>
+    </view>
+    <view class='footer_'>
+      <view class='footer_bar'>
+        <view class='fl w140'>商品合计：</view>
+        <view class='fl'>￥ {{list.goods_amount}}</view>
+      </view>
+      <view class='footer_bar'>
+        <view class='fl w140'>运费：</view>
+        <view class='fl'>￥ {{list.shipping_fee}}</view>
+      </view>
+      <view class='footer_bar'>
+        <view class='fl w140'>优惠：</view>
+        <view class='fl'>￥ {{list.rpacket}}</view>
+      </view>
+    </view>
+    <view class='footer_'>
+      <view class='footer_bar'>
+        <view class='fl w140 c_red'>实付：</view>
+        <view class='fl'>￥ {{list.order_amount}}</view>
+      </view>
+    </view>
+  </view>
+<view class="alertbox" wx:if="{{is_delete}}">
+    <view class="alert-p">确定要删除此订单吗？</view>
+    <view class="btnbox1">
+      <view class="cancelbtn1" bindtap="cancel_addressDel">取消</view>
+      <view class="surebtn1" bindtap='changeorder'>确定</view>
+    </view>
+  </view>
+  <view class="alertbox" wx:if="{{is_receiving}}">
+    <view class="alert-p">请确认您已收到了商品</view>
+    <view class="btnbox1">
+      <view class="cancelbtn1" bindtap="cancel_addressDel">取消</view>
+      <view class="surebtn1" bindtap='receiving'>确定</view>
+    </view>
+  </view>
+  <view class="alertbox" wx:if="{{is_order}}">
+    <view class="alert-p">确定要取消此订单？</view>
+    <view class="btnbox1">
+      <view class="cancelbtn1" bindtap="cancel_addressDel">取消</view>
+      <view class="surebtn1" bindtap='cancellation_order'>确定</view>
+    </view>
+  </view>
+</view>

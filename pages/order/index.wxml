@@ -1,0 +1,104 @@
+<view class='main' wx:if="{{list.length > 0}}" wx:for="{{list}}" wx:key>
+  <view class="myorder1" style="margin-bottom: 24rpx;">
+    <view class="order-num1" >订单号：{{item.order_sn}}
+      <view class="right ordertime" wx:if="{{item.ordertime>0  && item.order_state==10}}">付款剩余：{{item.ordertime}}分</view>
+    </view>
+    <view class="order-dl2">
+      <view class="dt left">
+        <image src="{{item.gooddetails.goods_image}}" bindtap='goDetail' data-order_sn="{{item.order_sn}}" class="order-img1 img-bg"></image>
+      </view>
+      <view class='dd'>
+        <view class="dd-left left" bindtap='goDetail' data-order_sn="{{item.order_sn}}">
+          <view class="dd-p1 margin-t1">{{item.gooddetails.goods_name}}</view>
+          <view class="dd-p2">共{{item.goodcount}}种商品</view>
+        </view>
+        <view class="dd-right right">
+          <view class="dd-p1"></view>
+          <view class="dd-p2 wordred state_text" wx:if="{{item.refund_state == 0 && item.order_state < 20 && item.ordertime < 1}}">付款超时</view>
+          <view class="dd-p2 wordred state_text" wx:else>{{item.order_state_text}}</view>
+          <image class="detailstate" wx:if="{{item.is_display ==1}}" src="http://shopdz.shopdz.cn/wap/img/slideup.png" bindtap='is_display' data-id='{{item.order_sn}}' data-is_display='{{item.is_display}}'></image>
+          <image class="detailstate" wx:if="{{item.is_display ==0}}" src="http://shopdz.shopdz.cn/wap/img/slidedown.png" bindtap='is_display' data-id='{{item.order_sn}}' data-is_display='{{item.is_display}}'></image>
+        </view>
+      </view>
+    </view>
+    <!-- wx:if="{{is_display}} -->
+    <view class="goodslist" wx:if="{{item.is_display ==1}}">
+      <view class="order-list myorder-list" wx:for="{{order_list}}" wx:key wx:for-item="info">
+        <view wx:for="{{info}}" wx:key wx:for-item="data" wx:if="{{item.order_sn == data.order_sn}}">
+          <view class="order-dl1 borderbot-none">
+            <view class="dl left">
+              <image class="img-bg" src="{{data.goods_image}}" style="height: 67px;"></image>
+            </view>
+            <view class="dd1 right">
+              <view class="tit-p1">
+                <text class="left tit-name">{{data.goods_name}}</text>
+                <view class="right">
+                  <text>x</text>
+                  <text>{{data.goods_num}}</text>
+                </view>
+              </view>
+              <view class="tit-p1 total-price">
+                <text class="left spec-name">{{data.goods_spec}}</text>
+                <text>¥{{data.goods_price}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="order-btn1">
+      <view class="dd-p2 order_amount" wx:if="{{item.order_state ==10 && item.ordertime>0}}">应付：¥{{item.order_amount}}</view>
+      <view class="btn-border1 borderred wordred right myorder-margin" wx:if="{{item.order_state ==10 && item.ordertime>0}}" bindtap="buy" data-id="{{item.order_sn}}">付款</view>
+      <view class="btn-border1 right cancel myorder-margin" wx:if="{{item.order_state ==10 && item.ordertime>0}}" bindtap="cancellation_order" data-id='{{item.order_sn}}'>取消订单</view>
+      <view class="dd-p2 order_amount" wx:if="{{item.refund_state ==1}}">审核中</view>
+      <view class="dd-p2 order_amount" wx:if="{{item.refund_state ==2}}">退款中</view>
+      <view class="dd-p2 order_amount" wx:if="{{item.refund_state ==3}}">已退款</view>
+      <view class="dd-p2 order_amount" wx:if="{{item.refund_state ==4}}">拒绝退款</view>
+      <!-- <view class="dd-p2 order_amount" wx:if="{{item.order_state == 0 || item.order_state < 20 && item.ordertime < 1}}">已取消</view>  -->
+      <view class="btn-border1 borderred wordred right myorder-margin" wx:if="{{item.order_state == 0 || item.order_state < 20 && item.ordertime < 1}}" bindtap="changeorder" data-id='{{item.order_sn}}'>删除订单</view>
+      <view class="btn-border1 borderred wordred right myorder-margin" bindtap="receiving" data-id='{{item.order_sn}}'  wx:if="{{item.order_state == 30}}">确认收货</view> 
+      <view class="btn-border1 right myorder-margin" wx:if="{{item.order_state == 30 ||item.order_state == 40}}">
+        <navigator url="/pages/logistics/index?order_sn={{item.order_sn}}" hover-class="none"> 
+              查看物流
+        </navigator>
+      </view>
+      <view class="btn-border1 borderred wordred right myorder-margin" wx:if="{{item.order_state == 40}}" bindtap="changeorder" data-id='{{item.order_sn}}'>删除订单</view>
+      <view class="btn-border1 borderred wordred right myorder-margin" bindtap="evaluate" data-id='{{item.order_sn}}' wx:if="{{item.order_state == 40}}">
+        商品评价</view>
+      <view class="btn-border1 right myorder-margin" wx:if="{{item.order_state == 20 && item.lock_state != 1 && item.return_state == 0 && item.refund_state ==0 }}" bindtap="reason" data-id='{{item.order_sn}}' >申请退款</view>
+      <view class="btn-border1 right myorder-margin" wx:if="{{item.order_state == 20 && item.return_state ==0  && item.refund_state != 0}}">
+        <navigator url="/pages/refund_detail/index?refund_sn={{item.refund_sn}}&type=1" hover-class="none"> 
+              查看退款
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="alertbox" wx:if="{{is_delete}}">
+    <view class="alert-p">确定要删除此订单吗？</view>
+    <view class="btnbox1">
+      <view class="cancelbtn1" bindtap="cancel_addressDel">取消</view>
+      <view class="surebtn1" bindtap='changeorder'>确定</view>
+    </view>
+  </view>
+  <view class="alertbox" wx:if="{{is_receiving}}">
+    <view class="alert-p">请确认您已收到了商品</view>
+    <view class="btnbox1">
+      <view class="cancelbtn1" bindtap="cancel_addressDel">取消</view>
+      <view class="surebtn1" bindtap='receiving'>确定</view>
+    </view>
+  </view>
+  <view class="alertbox" wx:if="{{is_order}}">
+    <view class="alert-p">确定要取消此订单？</view>
+    <view class="btnbox1">
+      <view class="cancelbtn1" bindtap="cancel_addressDel">取消</view>
+      <view class="surebtn1" bindtap='cancellation_order'>确定</view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{list.length == 0}}">
+  <view class='img-center'>
+    <image src="http://shopdz.shopdz.cn/wap/img/module1.jpg" style='width:80px; height:100px;' class='coupon-null-img'></image>
+    <view class='coupon-tit'>暂无订单</view>
+  </view>
+</view>

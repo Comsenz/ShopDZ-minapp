@@ -1,0 +1,231 @@
+.main{
+  height: 100%;
+}
+
+.myorder1 {
+    width: 90%;
+    padding: 0 5%;
+    background: #fff;
+    margin-bottom: 30rpx;
+    overflow: hidden;
+}
+.order-num1 {
+    font-size: 30rpx;
+    /* line-height: 3; */
+    font-weight: normal;
+}
+.right {
+    float: right;
+}
+.order-dl2 {
+    border-top: 1px solid #f5f5f5;
+    border-bottom: 1px solid #f5f5f5;
+    overflow: hidden;
+    margin-bottom: 20rpx;
+}
+.dt {
+    margin: 20rpx 0;
+    width: 158rpx;
+    height: 158rpx;
+    text-align: center;
+}
+.dt image{
+  width: 158rpx;
+  height: 158rpx;
+}
+.dd {
+    width: calc(100% - 158rpx);
+    overflow: hidden;
+    zoom: 1;
+    padding-top: 48rpx;
+    display: inline-block;
+    box-sizing: border-box;
+}
+.order-img1 {
+    display: inline-block;
+    width: 100%;
+}
+.img-bg {
+    background: #f4f4f4;
+}
+.dd-left {
+    width: 69%;
+    padding-left: 15rpx;
+    box-sizing: border-box;
+}
+.dd-right {
+    width: 30%;
+    text-align: center;
+    /* position: relative; */
+    /* align-items:center; */
+}
+.dd-p1 {
+    font-size: 30rpx;
+    line-height: 1.5;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.dd-p2 {
+    font-size: 30rpx;
+    line-height: 1.5;
+}
+.wordred {
+    color: #AB2B2B !important;
+}
+.left {
+    float: left;
+}
+
+
+.order_amount {
+    padding: .12rpx 0;
+    font-size: 30rpx;
+    border: 1px solid transparent;
+    display: inline-block;
+}
+.dd-p2 {
+    margin-top: .20rpx;
+    margin-bottom: .20rpx;
+    line-height: 1.5;
+}
+.btn-border1 {
+    display: inline-block;
+    padding: .12rpx 0 .8rpx 0;
+    font-size: 30rpx;
+    width: 22%;
+    border: 1px solid #888;
+    color: #888;
+    text-align: center;
+}
+.myorder-margin {
+    margin-right: 3%;
+}
+.borderred {
+    border: 1px solid #AB2B2B !important;
+    cursor: pointer;
+}
+.detail-open {
+    background: url(http://shopdz.shopdz.cn/wap/img/slidedown.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+.detail-stop {
+    background: url(http://shopdz.shopdz.cn/wap/img/slideup.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+.detailstate {
+    display: inline-block;
+    width: 40rpx;
+    height: 40rpx;
+    margin-top: .12rpx;
+}
+
+.myorder-list {
+    /* background: #fff; */
+    /* border-bottom: 1px solid #f5f5f5; */
+}
+.order-list {
+    background: #fff;
+    height: auto;
+    width: 90%;
+    padding: 0 5%;
+}
+.order-dl1 {
+    overflow: hidden;
+    zoom: 1;
+}
+.borderbot-none {
+    border-bottom: none !important;
+}
+.dd1 {
+    width: 76%;
+    margin-left: 2%;
+    height: 100%;
+}
+.tit-p1:first-child {
+    margin-top: 24rpx;
+}
+.tit-p1 {
+    font-size: 30rpx;
+    line-height: 2;
+    overflow: hidden;
+    zoom: 1;
+    cursor: pointer;
+}
+.tit-name {
+    font-size: 30rpx;
+    color: #666;
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.total-price {
+    text-align: right;
+}
+.spec-name {
+    color: #888;
+    width: 60%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
+}
+.dl {
+    padding: .20rpx 0 .10rpx 0;
+    width: 21%;
+    text-align: center;
+}
+.alertbox {
+    position: fixed;
+    z-index: 10001;
+    width: 80%;
+    /* width: 432px;  */
+    left: 10%;
+    background: #fff;
+    top: 30%;
+    display: block;
+}
+.alert-p {
+    font-size: 40rpx;
+    color: #666;
+    text-align: center;
+    line-height: 3;
+}
+.btnbox1 {
+    height: 80rpx;
+    border-top: 1px solid #f0f0f0;
+}
+.cancelbtn1  {
+    width: 50%;
+    height: 100%;
+    line-height: 80rpx;
+    float: left;
+    border-right: 1px solid #f0f0f0;
+    -webkit-box-sizing: border-box; 
+    font-size: 36rpx;
+    text-align: center;
+    cursor: pointer;
+}
+.surebtn1 {
+    width: 50%;
+    height: 100%;
+    line-height: 80rpx;
+    font-size: 36rpx;
+    text-align: center;
+    cursor: pointer;
+    color: #AB2B2B;
+    display: inline-block;
+}
+.img-center {
+    text-align: center;
+}
+.coupon-null-img {
+    margin: 20px auto;
+}
+.coupon-tit {
+    color: #888;
+    letter-spacing: 2px;
+    font-weight: normal;
+    font-size: 30rpx;
+}

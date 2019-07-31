@@ -1,0 +1,130 @@
+<view style='height:100vh;'>
+ <import src="../../plugins/wxParse/wxParse.wxml"/>
+ 
+<scroll-view scroll-y style='height:92vh;position:relative'>
+
+  <view class='_box'>
+    <swiper circular='true' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"duration="{{duration}}">
+      <block wx:for="{{data.goods_images}}" wx:key="key">
+        <swiper-item>
+          <image src='{{item}}' data-src="{{item}}" bindtap="previewImage" style='height:60vh;' />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='coll_btn' bindtap='user_collection'  wx:if="{{isCollected == 0}}">
+      <image src="../../img/collecticon.png"  class='collecticon' ></image>
+    </view>
+    <view class='coll_btn' bindtap='qxcollection'  wx:if="{{isCollected == 1}}">
+      <image src="../../img/collecticon2.png"  class='collecticon' ></image>
+    </view>
+    <view class='share_btn'>
+      <button class='share_btn1' open-type='share' data-program='{{data.goods_jingle}}' data-img='{{data.goods_image}}' data-id='{{data.goods_common_id}}'>
+      </button>
+      <image src="../../img/shareicon.png"  class="collecticon"></image>
+    </view>
+  </view>
+
+  <view class='title'>
+    {{data.goods_name}}
+    <view class='spec'>
+    {{data.goods_jingle}}
+    </view>
+  </view>
+  <view class='price'>
+  <text>￥</text>
+  {{data.goods_price}}
+  </view>
+   <view class='choice' bindtap='specFun' wx:if="{{!goods_name}}" >
+      规格：请选择规则和数量
+   </view> 
+   <view class='choice' bindtap='specFun' wx:if="{{goods_name}}" >
+     {{goods_name}} x{{num}}
+   </view> 
+   <view class="pro-parameter">
+	    <text class="para-tit">商品参数</text>
+		    		
+	  <view class="para-con specification" wx:for="{{data.goods_param}}" wx:key>
+	    <text class="spec-span1">{{item.param_name}}</text>
+	    <text class="spec-span2">{{item.param_value}}</text>
+	  </view>
+   </view>
+   <view class='tab'>
+    <view class='left'>
+      <text class='{{tabIs?"tab-acitve":""}}'>产品详情</text>
+    </view>
+   </view>
+   <view class='content' wx:if="{{tabIs}}">
+        <view class="doc">
+        <view class="wxParse-p">
+          <template is="wxParse" data="{{wxParseData:article.nodes}}">
+          </template>
+        </view>
+      </view>
+   </view>
+</scroll-view>
+<view class='bottom'>
+<view class='icon' bindtap='goShopCar'>
+    <image src='http://shopdz.shopdz.cn/wap/img/detail-comment.png' style='width:20px;height:17px;'></image>
+    <text>评价</text>
+</view>
+ <!-- bindtap='specFun' -->
+<view class='btn' bindtap='specFun'>
+  加入购物车
+</view>
+<view class='btn' style='background: #FE4543;' bindtap='purchase'>
+  立即购买
+</view>
+</view>
+<view class='popup' wx:if="{{specIs}}">
+    <view class='title'>
+      <view class='img'>
+        <image src='{{data.goods_image}}'></image>
+      </view>
+      <view class='text'>
+        <text>{{data.goods_name}}</text>
+        <view wx:if="{{!goods_price}}">￥{{data.goods_price}}</view>
+        <view wx:else>￥{{goods_price}}</view>
+      </view>
+      <view class='icon' bindtap='specFun'>
+        <image src="/images/delete.png"></image>
+      </view>
+    </view>
+  <scroll-view scroll-y class='content'>
+      <view class='item'>
+        <text style='padding-top:10px;'>颜色:</text>
+        <view class='list' >
+          <block wx:for="{{data.goods_list}}" wx:key="key">
+            <view class="{{goods_id==item.goods_id?'active':''}}" bindtap='color' data-current='{{item.goods_id}}'  data-goods_name='{{item.spec_goods_name}}' data-price="{{item.goods_price}}">{{item.spec_goods_name}}</view>
+          </block>
+        </view>
+      </view>
+      <view class='item'>
+        <text style='padding-top:10px;'>数量:</text>
+        <view class="stepper">
+          <!-- 减号 -->
+          <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+          <!-- 数值 -->
+          <input type="number" bindchange="bindManual" value="{{num}}" />
+          <!-- 加号 -->
+          <text class="normal" bindtap="bindPlus">+</text>
+        </view>
+      </view>
+  </scroll-view>
+  <!-- <view class='btn' bindtap='specFun'>
+  下一步
+  </view> -->
+  <!-- <view class='btn' bindtap='addCart'>
+  加入购物车
+</view> -->
+  <view class='bottom'>
+  <view class='btn' bindtap='addCart'>
+    加入购物车
+  </view>
+  <view class='btn' style='background: #FE4543;' bindtap='purchase'>
+    立即购买
+  </view>
+  </view>
+</view>
+</view>
+
+<image class='gotobtn' bindtap='gotobtn' src='../../img/home.png'></image>

@@ -1,0 +1,66 @@
+<view catchtap='bind_hide' class='bind_hide'>
+  <view class="totle-box">
+    <view class="spread-top totle-top">
+      <view class="spread-num">{{list.all_price}}</view>
+      <view class="spread-remind">累计奖励</view>
+      <!-- <image src="http://shopdz.shopdz.cn/wap/img/jt-r.png" style="width:20px;" class='spread-jtR'></image> -->
+    </view>
+    <view class="reward-box">
+      <view class="reward-tit"><view class="reward-titp left">未结算奖励</view><view class="reward-titnum right">{{list.no_settlement_price}}</view></view>
+      <view class="modular-box spread-list">
+        <view class="modular-li wx-code">
+            <button class='share_btn1' open-type='share' data-fid='{{list.member_uid}}'>
+             </button>
+            <image src="http://shopdz.shopdz.cn/wap/img/spread1.png" style="width:40px;height:40px;" class='modular-img'></image>
+            <view class="modular-word">微信分享</view>
+        </view>
+        <view class="modular-li code-li" catchtap='none' data-id='1'>
+            <image src="http://shopdz.shopdz.cn/wap/img/spread2.png" style="width:40px;height:40px;" class='modular-img'></image>
+            <view class="modular-word">二维码</view>
+        </view>
+        <view class="modular-li copy-li" catchtap='none' data-id='2'>
+            <image src="http://shopdz.shopdz.cn/wap/img/spread3.png" style="width:40px;height:40px;" class='modular-img'></image>
+            <view class="modular-word" id="copy-botton">复制链接</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cash-box">
+    <view class="spread-top totle-top">
+      <view class="spread-num1">{{list.settlement_price}}</view>
+      <view class="spread-remind">可提现奖励</view>
+    </view>
+    <view class="reward-box">
+      <view class="reward-tit"><view class="reward-titp left">提现冻结中</view><view class="reward-titnum right">{{list.frozen_price}}</view></view>
+      <view class="modular-box spread-list">
+        <view class="modular-li wx-code">
+          <navigator url="/pages/withdrawaccount/index" hover-class="none">
+            <image src="http://shopdz.shopdz.cn/wap/img/spread4.png" style="width:40px;height:40px;" class='modular-img'></image>
+            <view class="modular-word">申请提现</view>
+          </navigator>
+        </view>
+        <view class="modular-li code-li">
+          <navigator url="/pages/record/index" hover-class="none">
+            <image src="http://shopdz.shopdz.cn/wap/img/spread5.png" style="width:40px;height:40px;" class='modular-img'></image>
+            <view class="modular-word">提现记录</view>
+          </navigator>
+        </view>
+        <view class="modular-li copy-li" bindtap='tishi'>
+          <!-- <navigator url="/pages/withdrawaccount/index" hover-class="none"> -->
+            <image src="http://shopdz.shopdz.cn/wap/img/spread6.png" style="width:40px;height:40px;" class='modular-img'></image>
+            <view class="modular-word" id="copy-botton">修改账户</view>
+          <!-- </navigator> -->
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="httpcode-box" catchtap='function(){}' wx:if="{{is_url}}">
+    <view class="alert-http http" bindlongtap='copy'>{{list.qrcode_url}}</view>
+    <view class="alert-codebtn">长按网址复制</view>
+  </view>
+  <view class="savecode-box" catchtap='function(){}' wx:if="{{is_weixin}}">
+      <image src="{{list.qrcode}}" class="alert-code" bindtouchstart='timestart' bindtouchend='timeend' bindtap='saveImg'></image>
+      <view class="alert-codebtn">长按二维码图片保存</view>
+      <view class="alert-codetit">将图片发送给好友，吸引更多客流</view>
+  </view>
+</view>

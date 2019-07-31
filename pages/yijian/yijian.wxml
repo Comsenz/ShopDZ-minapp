@@ -1,0 +1,10 @@
+<!--pages/yijian/yijian.wxml-->
+
+<view class='page'>
+  <textarea class='qidai' bindinput="bindTextAreaBlur" placeholder='期待您的意见' show-confirm-bar='' maxlength='500'>
+    <view class='sheng'>剩余{{contentCount}}/500个字</view>
+  </textarea>
+  <input class='tel_tel' bindinput="bindKeyName" type='number' placeholder='请输入手机号，方便我们联系您'></input>
+  <button class='_tijiao' bindtap='feedback'>提交</button>
+</view>
+

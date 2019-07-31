@@ -1,0 +1,87 @@
+page {
+  background: rgb(238, 237, 237);
+}
+.content {
+    padding-top: 90rpx;
+    padding-bottom: 100rpx;
+    min-height: 60%;
+}
+.logistics-head {
+    height: 170rpx;
+    width: 100%;
+    background: url('https://miniapp.shopdz.cn/wap/img/wuliu-bg.png') repeat;
+    background-size: 100% 100%;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    /* display: -moz-box;
+    -moz-box-orient: horizontal;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+    display: -o-box;
+    -o-box-pack: center;
+    -o-box-align: center;
+    display: -ms-box;
+    -ms-box-pack: center;
+    -ms-box-align: center; */
+    /* display: box; */
+    /* box-pack: center; */
+    /* box-align: center; */
+    clear: both;
+}
+.cart-box {
+    width: 15%;
+    margin-left:15px;
+    text-align: center;
+}
+.cart-img {
+    display: inline-block;
+    height: 100rpx;
+    margin: auto;
+}
+.logistics-details {
+    width: 85%;
+    margin-left:15px;
+}
+.logistics-details .li {
+    font-size: 30rpx;
+    line-height: 2;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: start;
+    /* display: -moz-box;
+    -moz-box-orient: horizontal;
+    -moz-box-pack: start;
+    display: -o-box;
+    -o-box-orient: horizontal;
+    -o-box-pack: start;
+    display: -ms-box;
+    -ms-box-orient: horizontal;
+    -ms-box-pack: start; */
+    /* display: box; */
+    /* box-orient: horizontal; */
+    /* box-pack: start; */
+}
+
+.limit-p {
+    /* line-height: 2; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.logistics-track {
+    margin-top: 35rpx;
+    background: #fff;
+    width: 90%;
+    padding: 0 5%;
+}
+
+.li1 {
+   color: #2bab52 !important;
+    background: url('https://miniapp.shopdz.cn/wap/img/wuliu-code2.png') no-repeat left 30rpx;
+    background-size: 25rpx auto;
+    font-size: 28rpx;
+    line-height: 2;
+    padding: 25rpx 0 25rpx 40rpx;
+    border-bottom: 1px solid #f0f0f0;
+}

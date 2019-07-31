@@ -1,0 +1,55 @@
+<view style='height:100vh;'>
+  <view class='tab'>
+    <view bindtap='tabFun' data-index="1">
+      <text class='{{tabIndex==1?"active":""}}'>退款单</text>
+    </view>
+    <view bindtap='tabFun' data-index="2">
+      <text class='{{tabIndex==2?"active":""}}'>退货单</text>
+    </view>
+  </view>
+ <view id="tab-content" class="tab-content">
+  <view class="show voucher-list">
+    <view class="coupon-list" id="tab-contentul">
+      <view class="myorder2" wx:for="{{list}}" wx:key>
+        <view class="myorder2-det">
+          <view class="myorder2-det-span left">{{tabIndex==2?"退货编号：":"退款编号："}}</view>
+          <view class="myorder2-det-p left" wx:if="{{tabIndex==1}}">{{item.refund_sn}}</view>
+          <view class="myorder2-det-p left" wx:if="{{tabIndex==2}}">{{item.return_sn}}</view>
+          <view class="myorder2-det-p left"></view>
+          <view class="myorder2-det-span left">申请时间：</view>
+          <view class="myorder2-det-p left">{{item.dateline}}</view>
+          <view class="myorder2-det-span left">订单编号：</view>
+          <view class="myorder2-det-p left">{{item.order_sn}}</view>
+          <view class="myorder2-det-span left">{{tabIndex==2?"退货金额：":"退款金额："}}</view>
+          <view class="myorder2-det-p left" wx:if="{{tabIndex==1}}">{{item.refund_amount}}</view>
+          <view class="myorder2-det-p left" wx:if="{{tabIndex==2}}">{{item.return_amount}}</view>
+        </view>
+        <view class="order-num1 order-num2" wx:if="{{tabIndex==1}}">
+					<view class="audit-state left wordred state-word">{{item.status_text}}</view>
+          <navigator url="/pages/refund_detail/index?refund_sn={{item.refund_sn}}&type=1" hover-class="none"> 
+            <view class="btn-border1 borderred wordred surebtn3 right">查看</view>
+          </navigator>
+				</view>
+        <view class="order-num1 order-num2" wx:else>
+					<view class="audit-state left wordred state-word">{{item.status_text}}</view>
+          <navigator url="/pages/refund_detail/index?refund_sn={{item.return_sn}}&type=2" hover-class="none"> 
+            <view class="btn-border1 borderred wordred surebtn3 right">查看</view>
+          </navigator>
+				</view>
+			</view>
+      <view wx:if="{{list.length ==0 && tabIndex==2}}">  
+        <view  class='img-center'>
+          <image src="http://shopdz.shopdz.cn/wap/img/refundImg.png" style='width:80px; height:90px;' class='coupon-null-img'></image>
+          <view class='coupon-tit'>暂无退货</view>
+        </view>
+      </view>
+      <view wx:if="{{list.length ==0 && tabIndex==1}}">  
+        <view  class='img-center'>
+          <image src="http://shopdz.shopdz.cn/wap/img/refundImg.png" style='width:80px; height:90px;' class='coupon-null-img'></image>
+          <view class='coupon-tit'>暂无退款</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>

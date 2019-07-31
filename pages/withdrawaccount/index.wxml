@@ -1,0 +1,42 @@
+<import src="../../plugins/wxParse/wxParse.wxml"/>
+<view class="main" wx:if="{{is_default == 0}}">
+  <view class='data'>
+      <view class='item'>
+        <text>可提现金额</text>
+        <text>{{account}}</text>
+      </view>
+      <view class='item'>
+        <text>本次提现</text>
+        <input type='number' value="" bindinput="bindKeyNumer"  placeholder='最少{{list.minprice}}元，最多{{list.maxprice}}元'></input>
+      </view>
+      <view class='item more'>
+        <text>微信钱包</text>
+        <view class='tab' bindtap='tishi'>点击更换</view>
+      </view>
+
+  </view>
+      <view class='tixian' bindtap='explain'>提现说明</view>
+      <view class='btn active' bindtap='submitFun'>保存</view>
+  <!-- <view class='data'>
+      <view class='item'>
+        <text>手机号</text>
+        <input type='text' value="" bindinput="bindKeyPhone" placeholder='11位手机号码'></input>
+      </view>
+      <view class='item'>
+        <text>图形验证</text>
+        <input type='number' value="" bindinput="bindKeyNumer"  placeholder=''></input>
+        <image id="click_verify" rel-src="https://miniapp.shopdz.cn/api.php/base/showVerifyCode" alt="图形验证码" class="verification" bindtap='erweima' src="https://miniapp.shopdz.cn/api.php/base/showVerifyCode?{{rand}}"></image>
+      </view>
+      <view class='item'>
+        <text>手机验证</text>
+        <input type='text' bindinput="bindKeyDetailed"  value="" placeholder=''></input>
+        <view bindtap='get_code' wx:if='{{is_default == 1}}' bindtap='post' class="send-out send-out-bg">获取验证码</view>
+        <view bindtap='get_code' wx:if='{{is_default == 0}}' class="send-out send-out-bg time">重新发送(<view class='s'>{{countDownNum}}</view>)</view>
+      </view>
+    <view class='btn active' bindtap='submitFun'>保存</view>
+  </view> -->
+</view>
+<view wx:if="{{is_default == 1}}">
+  <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  <view class='btn active' bindtap='returns'>返回</view>
+</view>
